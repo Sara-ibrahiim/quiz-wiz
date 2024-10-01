@@ -9,7 +9,6 @@ const ThemeToggle: React.FC = () => {
   const theme = useSelector((state: RootState) => state.theme.theme);
 
   useEffect(() => {
-    // Add the 'dark' class to <html> if the theme is dark
     document.documentElement.classList.toggle("dark", theme === "dark");
   }, [theme]);
 
