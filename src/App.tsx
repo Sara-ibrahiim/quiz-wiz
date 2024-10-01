@@ -28,7 +28,7 @@ function App() {
           element: <ForgotPassword />,
         },
         {
-          path: "reset-passwrd",
+          path: "reset-password",
           element: <ResetPassword />,
         },
         {

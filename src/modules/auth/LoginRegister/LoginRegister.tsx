@@ -1,5 +1,4 @@
 import AuthButton from "../../../components/AuthButton";
-import ThemeToggle from "../../theme/ThemeToggle";
 
 const LoginRegister = () => {
   return (
