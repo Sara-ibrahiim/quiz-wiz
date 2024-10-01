@@ -5,7 +5,6 @@ const LoginRegister = () => {
   return (
     <div>
       <AuthButton title="Sign In" />
-      <ThemeToggle />
     </div>
   );
 };

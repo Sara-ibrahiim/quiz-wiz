@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "./themeSlice";
 import { RootState } from "../../store/store";
+import { BsSunFill } from "react-icons/bs";
 
 const ThemeToggle: React.FC = () => {
   const dispatch = useDispatch();
@@ -15,16 +16,11 @@ const ThemeToggle: React.FC = () => {
   return (
     <div>
       <button
-        className="bg-accent p-2 rounded"
+        className="bg-accent p-1 rounded dark:bg-secondaryLight text-primaryDark dark:text-primaryDark"
         onClick={() => dispatch(toggleTheme())}
       >
-        Switch to {theme === "light" ? "Dark" : "Light"} Mode
+        <BsSunFill />
       </button>
-
-      {/* Example content */}
-      <div className="p-10 bg-primaryLight dark:bg-primaryDark text-primaryDark dark:text-primaryLight">
-        <p>This is the {theme} theme!</p>
-      </div>
     </div>
   );
 };
