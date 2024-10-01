@@ -16,7 +16,7 @@ const ThemeToggle: React.FC = () => {
   return (
     <div>
       <button
-        className="bg-accent p-1 rounded dark:bg-secondaryLight text-primaryDark dark:text-primaryDark"
+        className="bg-primaryDark p-1 rounded dark:bg-secondaryLight text-lg text-secondaryLight dark:text-primaryDark"
         onClick={() => dispatch(toggleTheme())}
       >
         <BsSunFill />
