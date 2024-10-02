@@ -9,7 +9,7 @@ const AuthLogo = () => {
       <span className="text-4xl">
         <IoCheckmarkCircleOutline />
       </span>
-      <span className="text-xl">| Quizwiz</span>
+      <span className="text-xl">|Quizwiz</span>
     </div>
   );
 };
