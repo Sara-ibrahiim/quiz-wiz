@@ -7,11 +7,15 @@ const AuthLayout = () => {
       <span className="absolute top-3 right-5">
         <ThemeToggle />
       </span>
-      <div className="flex-1">
+      <div className="w-7/12">
         <Outlet />
       </div>
-      <div className="auth-image-container h-full flex-1">
-        <img src={AuthImage} alt="" className="w-11/12" />
+      <div className="auth-image-container h-full w-5/12">
+        <img
+          src={AuthImage}
+          alt="authentication image"
+          className="xl:w-11/12 "
+        />
       </div>
     </div>
   );
