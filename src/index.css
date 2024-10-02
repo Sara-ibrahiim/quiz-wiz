@@ -6,3 +6,6 @@
 body {
   font-family: "Nunito", sans-serif;
 }
+.logo .icon {
+  margin-right: -8px;
+}

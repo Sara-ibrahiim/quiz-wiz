@@ -6,7 +6,7 @@ const LoginRegister = () => {
   return (
     <div className="login-register-container">
       <div className="logo dark:text-primaryLight  text-primaryDark flex items-center">
-        <span className="text-4xl">
+        <span className="text-4xl icon">
           <IoIosCloseCircleOutline />
         </span>
         <span className="text-4xl">
