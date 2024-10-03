@@ -2,6 +2,7 @@ import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FaEnvelope, FaKey } from "react-icons/fa";
 import AuthButton from "../../../components/AuthButton";
+import { EmailValidation } from "../../../constants/Validation";
 
 // Define the form data type
 interface FormData {
@@ -34,7 +35,7 @@ const LoginForm: React.FC = () => {
           type="email"
           placeholder="Type your email"
           className="pl-10 bg-transparent border-none outline-none text-primaryDark dark:text-lightText placeholder:text-primaryDark dark:placeholder:text-primaryLight w-full"
-          {...register("email", { required: "Email is required" })}
+          {...register("email", EmailValidation)}
         />
       </div>
       {errors.email && (
