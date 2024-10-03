@@ -25,7 +25,7 @@ const LoginForm: React.FC = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col gap-6 w-full mx-auto py-6"
+      className="flex flex-col gap-10 w-full mx-auto py-20"
     >
       {/* Email Field */}
       <div className="relative flex items-center border-2 border-borderColor rounded-md p-3 dark:bg-darkSurface dark:border-primaryLight">
