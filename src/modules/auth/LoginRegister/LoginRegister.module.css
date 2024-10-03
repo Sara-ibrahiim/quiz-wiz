@@ -6,15 +6,3 @@
   font-size: 3.5rem;
   cursor: pointer;
 }
-/* Autofill styles */
-input:-webkit-autofill {
-  background-color: transparent !important; /* Inherit background in dark mode */
-  color: inherit !important; /* Ensure text color matches your theme */
-  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
-  box-shadow: 0 0 0px 1000px transparent inset !important;
-}
-
-/* For first-line text color in autofilled input */
-input:-webkit-autofill::first-line {
-  color: inherit !important;
-}
