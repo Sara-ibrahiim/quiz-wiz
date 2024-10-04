@@ -19,11 +19,6 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ setMode }) => {
   } = useForm<RegisterFormData>();
 
   const onSubmit: SubmitHandler<RegisterFormData> = async (data) => {
-    if (data.role === "Choose your role") {
-      toast.error("Please select a valid role");
-      return;
-    }
-
     try {
       await axios.post(Auth_URls.register, data);
       toast.success("Account Created Successfully. Please log in.");
@@ -41,7 +36,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ setMode }) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col gap-4 w-full mx-auto pt-10"
+      className="flex flex-col gap-8 w-full mx-auto pt-10"
     >
       {/* First Name */}
       <div className="flex gap-10">
@@ -107,15 +102,11 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ setMode }) => {
           <FaUsers className="absolute text-2xl left-4 text-primaryDark dark:text-lightText" />
           <select
             className="pl-10 bg-primaryLight dark:bg-darkSurface text-primaryDark dark:text-lightText border-none outline-none w-full"
-            {...register("role", {
-              validate: (value) =>
-                value !== "Choose your role" || "Please select a valid role",
-            })}
-            defaultValue="Choose your role"
+            {...register("role")}
+            defaultValue="Student"
+            disabled
           >
-            <option disabled>Choose your role</option>
             <option value="Student">Student</option>
-            <option value="Instructor">Instructor</option>
           </select>
         </div>
         {errors.role && (

@@ -7,8 +7,12 @@ import { LoginFormData } from "../../../utils/interfaces";
 import { Auth_URls } from "../../../constants/End-points";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { setAuth } from "../authSlice";
 
 const LoginForm: React.FC = () => {
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -17,7 +21,16 @@ const LoginForm: React.FC = () => {
 
   const onSubmit: SubmitHandler<LoginFormData> = async (data) => {
     try {
-      await axios.post(Auth_URls.login, data);
+      const response = await axios.post(Auth_URls.login, data);
+
+      const { accessToken, refreshToken, profile } = response.data.data;
+
+      dispatch(setAuth({ accessToken, refreshToken, profile }));
+
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("refreshToken", refreshToken);
+      localStorage.setItem("profile", JSON.stringify(profile));
+
       toast.success("Logged in Successfully");
     } catch (error) {
       if (axios.isAxiosError(error)) {
