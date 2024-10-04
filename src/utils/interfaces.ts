@@ -11,7 +11,7 @@ export interface RegisterFormData {
   first_name: string;
   last_name: string;
   email: string;
-  role: "Student" | "Instructor" | "Choose your role";
+  role: "Student";
   password: string;
 }
 
