@@ -1,5 +1,5 @@
-import CheckMark from "../assets/check-mark.png";
 import { AuthButtonProps } from "../utils/interfaces";
+import CheckMark from "../assets/check-mark.png";
 
 const AuthButton = ({ title }: AuthButtonProps) => {
   return (
