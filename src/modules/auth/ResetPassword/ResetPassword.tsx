@@ -60,7 +60,7 @@ export default function ResetPassword() {
         <form
           onSubmit={handleSubmit(onSubmit)}
           method="post"
-          className="w-9/12"
+          className="w-11/12"
         >
           <div className=" relative">
             <IoMdMail className=" absolute text-2xl left-4 mt-2  text-primaryDark dark:text-white" />
@@ -79,7 +79,7 @@ export default function ResetPassword() {
             )}
           </div>
 
-          <div className="relative  my-6">
+          <div className="relative  my-7">
             <RiMailSendFill className=" absolute text-2xl left-4 mt-2  text-primaryDark dark:text-white" />
 
             <input
@@ -102,7 +102,7 @@ export default function ResetPassword() {
             )}
           </div>
 
-          <div className="relative mb-6">
+          <div className="relative mb-7">
             <FaKey className=" absolute text-2xl left-4 mt-2  text-primaryDark dark:text-white" />
 
             <input
@@ -143,7 +143,7 @@ export default function ResetPassword() {
             )}
           </div>
 
-          <div className="relative mb-3">
+          <div className="relative mb-5">
             <FaKey className=" absolute text-2xl left-4 mt-2  text-primaryDark dark:text-white" />
 
             <input

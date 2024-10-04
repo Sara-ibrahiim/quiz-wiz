@@ -9,7 +9,23 @@ body {
 .logo .icon {
   margin-right: -8px;
 }
-:root {
-  --toastify-color-success: #0D1321 !important;
-  --toastify-icon-color-success: var(--toastify-color-success) !important;
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #f2f2f2 inset !important;
+  box-shadow: 0 0 0px 1000px #f2f2f2 inset !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+html.dark input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #1e1e1e inset !important;
+  box-shadow: 0 0 0px 1000px #1e1e1e inset !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+html.dark input:-webkit-autofill::first-line {
+  color: #fff !important;
+}
+
+input:-webkit-autofill::first-line {
+  color: #000 !important;
 }
