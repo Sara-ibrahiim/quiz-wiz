@@ -47,7 +47,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ setMode }) => {
             <input
               type="text"
               placeholder="Type your first name"
-              className="pl-10 bg-transparent border-none outline-none text-primaryDark dark:text-lightText placeholder:text-primaryDark dark:placeholder:text-primaryLight w-full"
+              className="pl-10 bg-transparent xs:text-xs border-none outline-none text-primaryDark dark:text-lightText placeholder:text-primaryDark dark:placeholder:text-primaryLight w-full"
               {...register("first_name", {
                 required: "First name is required",
               })}
@@ -62,7 +62,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ setMode }) => {
 
         {/* Last Name */}
         <div className="flex-1">
-          <div className="relative flex items-center border-2 mb-2 border-borderColor rounded-md p-3 dark:bg-darkSurface dark:border-primaryLight">
+          <div className="relative flex items-center xs:text-xs  border-2 mb-2 border-borderColor rounded-md p-3 dark:bg-darkSurface dark:border-primaryLight">
             <FaUser className="absolute text-2xl left-4 text-primaryDark dark:text-lightText" />
             <input
               type="text"
