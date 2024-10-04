@@ -53,7 +53,7 @@ export default function ResetPassword() {
       <AuthLogo />
 
       <section>
-        <div className=" my-9">
+        <div className=" my-7">
           <p className="text-[#C5D86D] text-2xl font-bold">Reset password</p>
         </div>
 
@@ -63,11 +63,11 @@ export default function ResetPassword() {
           className="w-11/12"
         >
           <div className=" relative">
-            <IoMdMail className=" absolute text-2xl left-4 mt-2  text-primaryDark dark:text-white" />
+            <IoMdMail className=" absolute text-2xl left-4 mt-3  text-primaryDark dark:text-white" />
             <input
               type="email"
               placeholder="Type your email"
-              className="invalid:border-rose-500 focus:bg-transparent font-light placeholder-black dark:placeholder-white p-2
+              className="invalid:border-rose-500 focus:bg-transparent font-light placeholder-black dark:placeholder-white p-3
           rounded-lg w-full border-2 focus:border-2
            border-primaryDark dark:border-white pl-11 text-sm  bg-transparent  text-primaryDark dark:text-white"
               {...register("email", EmailValidation)}
@@ -80,12 +80,12 @@ export default function ResetPassword() {
           </div>
 
           <div className="relative  my-7">
-            <RiMailSendFill className=" absolute text-2xl left-4 mt-2  text-primaryDark dark:text-white" />
+            <RiMailSendFill className=" absolute text-2xl left-4 mt-3 text-primaryDark dark:text-white" />
 
             <input
               type="text"
-              placeholder="Type your oTb"
-              className="invalid:border-rose-500 dark:invalid:border-rose-500 p-2 font-light focus:bg-transparent  
+              placeholder="Type your otb"
+              className="invalid:border-rose-500 dark:invalid:border-rose-500 p-3 font-light focus:bg-transparent  
          focus:border-2 rounded-lg pl-11 text-sm w-full border-2 border-primaryDark dark:border-white bg-transparent placeholder-black dark:placeholder-white text-primaryDark dark:text-white "
               {...register("otp", {
                 required: "OTP is required",
@@ -103,11 +103,11 @@ export default function ResetPassword() {
           </div>
 
           <div className="relative mb-7">
-            <FaKey className=" absolute text-2xl left-4 mt-2  text-primaryDark dark:text-white" />
+            <FaKey className=" absolute text-2xl left-4 mt-3  text-primaryDark dark:text-white" />
 
             <input
               type={isPasswordVisible ? "text" : "password"}
-              className="invalid:border-rose-500 pl-11 text-sm f p-2 font-light focus:bg-transparent  
+              className="invalid:border-rose-500 pl-11 text-sm f p-3 font-light focus:bg-transparent  
          focus:border-2  rounded-lg w-full border-2 border-primaryDark dark:border-white bg-transparent placeholder-black dark:placeholder-white text-primaryDark dark:text-white "
               placeholder="Type your password"
               aria-label="password"
@@ -123,7 +123,7 @@ export default function ResetPassword() {
               }}
               aria-hidden="true"
               type="button"
-              className="text-2xl absolute mt-2 right-0 me-3"
+              className="text-2xl absolute mt-3 right-0 me-3"
               id="basic-addon1"
               onClick={() => setIsPasswordVisible((prev) => !prev)}
             >
@@ -143,12 +143,12 @@ export default function ResetPassword() {
             )}
           </div>
 
-          <div className="relative mb-5">
-            <FaKey className=" absolute text-2xl left-4 mt-2  text-primaryDark dark:text-white" />
+          <div className="relative mb-4">
+            <FaKey className=" absolute text-2xl left-4 mt-3  text-primaryDark dark:text-white" />
 
             <input
               type={isPasswordVisible ? "text" : "password"}
-              className="invalid:border-rose-500 pl-11  text-sm f p-2 font-light w-full focus:bg-transparent  
+              className="invalid:border-rose-500 pl-11  text-sm f p-3 font-light w-full focus:bg-transparent  
          focus:border-2 rounded-lg border-2 border-primaryDark
           dark:border-white bg-transparent placeholder-black dark:placeholder-white
            text-primaryDark dark:text-white "
@@ -169,7 +169,7 @@ export default function ResetPassword() {
               onMouseUp={(e) => {
                 e.preventDefault();
               }}
-              className="text-2xl absolute mt-2 right-0 me-3"
+              className="text-2xl absolute mt-3 right-0 me-3"
               id="basic-addon1"
               onClick={() => setIsPasswordVisible((prev) => !prev)}
               aria-hidden="true"

@@ -1,14 +1,15 @@
-import React from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
 import { FaEnvelope, FaKey } from "react-icons/fa";
+import { SubmitHandler, useForm } from "react-hook-form";
+
 import AuthButton from "../../../components/AuthButton";
+import { Auth_URls } from "../../../constants/End-points";
 import { EmailValidation } from "../../../constants/Validation";
 import { LoginFormData } from "../../../utils/interfaces";
-import { Auth_URls } from "../../../constants/End-points";
+import React from "react";
 import axios from "axios";
+import { setAuth } from "../authSlice";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { setAuth } from "../authSlice";
 
 const LoginForm: React.FC = () => {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ const LoginForm: React.FC = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col gap-10 w-full mx-auto py-20"
+      className="flex flex-col w-11/12 mt-7 gap-3 mx-auto"
     >
       {/* Email Field */}
       <div>
