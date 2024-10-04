@@ -4,8 +4,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 
 body {
-  font-family: "Nunito", sans-serif;
+  font-family: "Nunito", sans-serif !important;
 }
 .logo .icon {
   margin-right: -8px;
+}
+:root {
+  --toastify-color-success: #0D1321 !important;
+  --toastify-icon-color-success: var(--toastify-color-success) !important;
 }

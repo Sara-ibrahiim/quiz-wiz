@@ -13,3 +13,4 @@ export const Auth_URls ={
     changePassword : `${Base_Auth}/change-password`,
     logout: `${Base_Auth}/logout`,
 }
+ 
