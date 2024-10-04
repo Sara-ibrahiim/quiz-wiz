@@ -84,7 +84,7 @@ export default function ResetPassword() {
 
             <input
               type="text"
-              placeholder="Type your oTb"
+              placeholder="Type your otb"
               className="invalid:border-rose-500 dark:invalid:border-rose-500 p-2 font-light focus:bg-transparent  
          focus:border-2 rounded-lg pl-11 text-sm w-full border-2 border-primaryDark dark:border-white bg-transparent placeholder-black dark:placeholder-white text-primaryDark dark:text-white "
               {...register("otp", {
