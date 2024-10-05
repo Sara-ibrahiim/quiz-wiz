@@ -3,7 +3,6 @@ import {
   PasswordValidation,
 } from "../../../constants/Validation";
 import { FaEye, FaEyeSlash, FaKey } from "react-icons/fa";
-
 import AuthButton from "../../../components/AuthButton";
 import AuthLogo from "../../../components/AuthLogo";
 import { Auth_URls } from "../../../constants/End-points";

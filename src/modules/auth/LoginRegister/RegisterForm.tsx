@@ -1,18 +1,28 @@
 import {
+  FaEnvelope,
+  FaEye,
+  FaEyeSlash,
+  FaKey,
+  FaUser,
+  FaUsers,
+} from "react-icons/fa";
+import { RegisterFormData, RegisterFormProps } from "../../../utils/interfaces";
+import { SubmitHandler, useForm } from "react-hook-form";
+import AuthButton from "../../../components/AuthButton";
+import { Auth_URls } from "../../../constants/End-points";
+import React, { useState } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
+import {
   EmailValidation,
   PasswordValidation,
 } from "../../../constants/Validation";
-import { FaEnvelope, FaKey, FaUser, FaUsers } from "react-icons/fa";
-import { RegisterFormData, RegisterFormProps } from "../../../utils/interfaces";
-import { SubmitHandler, useForm } from "react-hook-form";
-
-import AuthButton from "../../../components/AuthButton";
-import { Auth_URls } from "../../../constants/End-points";
-import React from "react";
-import axios from "axios";
-import { toast } from "react-toastify";
 
 const RegisterForm: React.FC<RegisterFormProps> = ({ setMode }) => {
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false); // Password visibility state
+  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
+    useState(false); // Confirm Password visibility state
+
   const {
     register,
     handleSubmit,
@@ -37,12 +47,12 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ setMode }) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col w-11/12 mt-5 gap-3 mx-auto "
+      className="flex flex-col w-11/12 mt-5 gap-3 mx-auto"
     >
       {/* First Name */}
       <div className="flex gap-10">
         <div className="flex-1">
-          <div className="relative flex items-center border-2 mb-2 border-borderColor rounded-md p-3 dark:bg-darkSurface dark:border-primaryLight">
+          <div className="relative flex items-center border-2 mb-2 border-borderColor rounded-md p-3  dark:border-primaryLight">
             <FaUser className="absolute text-2xl left-4 text-primaryDark dark:text-lightText" />
             <input
               type="text"
@@ -62,7 +72,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ setMode }) => {
 
         {/* Last Name */}
         <div className="flex-1">
-          <div className="relative flex items-center xs:text-xs  border-2 mb-2 border-borderColor rounded-md p-3 dark:bg-darkSurface dark:border-primaryLight">
+          <div className="relative flex items-center xs:text-xs border-2 mb-2 border-borderColor rounded-md p-3  dark:border-primaryLight">
             <FaUser className="absolute text-2xl left-4 text-primaryDark dark:text-lightText" />
             <input
               type="text"
@@ -81,7 +91,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ setMode }) => {
 
       {/* Email Address */}
       <div>
-        <div className="relative flex items-center border-2 mb-2 border-borderColor rounded-md p-3 dark:bg-darkSurface dark:border-primaryLight">
+        <div className="relative flex items-center border-2 mb-2 border-borderColor rounded-md p-3  dark:border-primaryLight">
           <FaEnvelope className="absolute text-2xl left-4 text-primaryDark dark:text-lightText" />
           <input
             type="email"
@@ -98,16 +108,16 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ setMode }) => {
       </div>
 
       {/* Role Selection */}
-      <div className="">
-        <div className="relative flex items-center border-2 mb-2 border-borderColor rounded-md p-3 dark:bg-darkSurface dark:border-primaryLight">
+      <div>
+        <div className="relative flex items-center border-2 mb-2 border-borderColor rounded-md p-3  dark:border-primaryLight">
           <FaUsers className="absolute text-2xl left-4 text-primaryDark dark:text-lightText" />
           <select
-            className="pl-10 bg-primaryLight dark:bg-darkSurface text-primaryDark dark:text-lightText border-none outline-none w-full"
+            className="pl-10 bg-transparent  text-primaryDark dark:text-lightText border-none outline-none w-full"
             {...register("role")}
             defaultValue="Student"
             disabled
           >
-            <option value="Student">Student</option>
+            <option value="Student">Signing up as Student</option>
           </select>
         </div>
         {errors.role && (
@@ -119,14 +129,25 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ setMode }) => {
 
       {/* Password Field */}
       <div>
-        <div className="relative flex items-center border-2 mb-2 border-borderColor rounded-md p-3 dark:bg-darkSurface dark:border-primaryLight">
+        <div className="relative flex items-center border-2 mb-2 border-borderColor rounded-md p-3  dark:border-primaryLight">
           <FaKey className="absolute text-2xl left-4 text-primaryDark dark:text-lightText" />
           <input
-            type="password"
+            type={isPasswordVisible ? "text" : "password"}
             placeholder="Type your password"
             className="pl-10 bg-transparent border-none outline-none text-primaryDark dark:text-lightText placeholder:text-primaryDark dark:placeholder:text-primaryLight w-full"
             {...register("password", PasswordValidation)}
           />
+          <button
+            type="button"
+            className="absolute right-4 text-2xl"
+            onClick={() => setIsPasswordVisible((prev) => !prev)}
+          >
+            {isPasswordVisible ? (
+              <FaEyeSlash className="text-primaryDark dark:text-lightText" />
+            ) : (
+              <FaEye className="text-primaryDark dark:text-lightText" />
+            )}
+          </button>
         </div>
         {errors.password && (
           <span className="dark:text-red-400 text-red-600 text-sm">
