@@ -18,15 +18,19 @@ input:-webkit-autofill {
 }
 
 html.dark input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px #1e1e1e inset !important;
-  box-shadow: 0 0 0px 1000px #1e1e1e inset !important;
+  -webkit-box-shadow: 0 0 0px 1000px #0d1321 inset !important;
+  box-shadow: 0 0 0px 1000px #0d1321 inset !important;
   -webkit-text-fill-color: #fff !important;
 }
 
 html.dark input:-webkit-autofill::first-line {
-  color: #fff !important;
+  color: tra !important;
 }
 
 input:-webkit-autofill::first-line {
-  color: #000 !important;
+  color: transparent !important;
+}
+
+.master-layout {
+  height: calc(100vh - 76px);
 }

@@ -20,8 +20,6 @@ import {
 
 const RegisterForm: React.FC<RegisterFormProps> = ({ setMode }) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false); // Password visibility state
-  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
-    useState(false); // Confirm Password visibility state
 
   const {
     register,

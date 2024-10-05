@@ -9,12 +9,12 @@ import axios from "axios";
 import { setAuth } from "../authSlice";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginForm: React.FC = () => {
   const dispatch = useDispatch();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false); // Password visibility state
-
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -24,15 +24,12 @@ const LoginForm: React.FC = () => {
   const onSubmit: SubmitHandler<LoginFormData> = async (data) => {
     try {
       const response = await axios.post(Auth_URls.login, data);
-
       const { accessToken, refreshToken, profile } = response.data.data;
-
       dispatch(setAuth({ accessToken, refreshToken, profile }));
-
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("refreshToken", refreshToken);
       localStorage.setItem("profile", JSON.stringify(profile));
-
+      navigate("/dashboard");
       toast.success("Logged in Successfully");
     } catch (error) {
       if (axios.isAxiosError(error)) {

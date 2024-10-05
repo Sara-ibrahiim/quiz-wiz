@@ -35,23 +35,23 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="login-register-container h-full flex flex-col justify-between">
+    <div className="login-register-container h-full flex flex-col justify-between  text-primaryDark dark:text-lightText">
       <AuthLogo />
 
-      <div className="my-5">
+      <div className="my-5 pt-10">
         <h1 className="text-[25px] font-[700] text-accent">Forget Password</h1>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex flex-col w-full my-5">
-          <label className="text-[18px] font-[700] leading-[20px]">
+        <div className="flex flex-col w-full my-5 pt-10">
+          <label className="text-[18px] font-[700] leading-[20px] py-5 text-primaryDark dark:text-lightText">
             Email Address
           </label>
           <div className="relative w-full mt-2">
-            <MdEmail className="absolute left-1 top-1/2 text-3xl transform -translate-y-1/2 text-white" />
+            <MdEmail className="absolute left-1 top-1/2 text-3xl transform -translate-y-1/2 text-primaryDark dark:text-lightText" />
             <input
               {...register("email", EmailValidation)}
-              className="w-full border-[3px] border-white rounded-md p-3 pl-8 text-primaryDark dark:text-primaryLight bg-transparent"
+              className="w-full border-[3px] border-primaryDark dark:border-lightText rounded-md p-3 pl-8 bg-transparent text-primaryDark dark:text-lightText placeholder-primaryDark dark:placeholder-lightText"
               type="email"
               placeholder="Enter your email address"
             />
@@ -60,18 +60,17 @@ const ForgotPassword = () => {
             <p className="text-[14px] text-[#FF453A]">Email is required</p>
           )}
         </div>
-        <div className="flex flex-col w-full m-5"></div>
 
-        <div className="btn">
-          <AuthButton title="Send Email" />
+        <div className="flex justify-between items-center py-10">
+          <div className="btn">
+            <AuthButton title="Send Email" />
+          </div>
+          <Link to="/auth" className="text-accent hover:underline">
+            <span className="text-primaryDark dark:text-lightText">Login?</span>{" "}
+            Click Here
+          </Link>
         </div>
       </form>
-
-      <div className="back-home mt-20 text-right">
-        <Link to="/auth" className="text-[#C5D86D]">
-          <span className="text-white">Login?</span> Click Here
-        </Link>
-      </div>
     </div>
   );
 };
