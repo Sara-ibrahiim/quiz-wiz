@@ -34,15 +34,15 @@ const ChangePassword = () => {
     try {
       const { confirmPassword, ...apiData } = data;
       const token = localStorage.getItem("accessToken");
-      const response = await axios.post(
+      await axios.post(
         Auth_URls.changePassword,
         { password: apiData.password, password_new: apiData.newPassword },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      toast.success("Password changed successfully" || response.data.message);
+      toast.success("Password changed successfully");
       navigate("/dashboard/homepage");
     } catch (error: any) {
-      toast.error("Password change failed" || error.response?.data?.message);
+      toast.error("Password change failed");
     }
   };
 

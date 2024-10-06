@@ -15,9 +15,7 @@ const Navbar = () => {
   // Handle logout
   const handleLogout = () => {
     dispatch(clearAuth());
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
-    localStorage.removeItem("profile");
+    localStorage.clear();
     navigate("/auth");
   };
 
