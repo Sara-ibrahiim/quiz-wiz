@@ -23,7 +23,6 @@ interface DataReset {
 
 export default function ResetPassword() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  let password;
   let navigate = useNavigate();
 
   let {
@@ -32,7 +31,7 @@ export default function ResetPassword() {
     watch,
     formState: { errors },
   } = useForm<DataReset>({ mode: "onChange" });
-  password = watch("password", "");
+
   let onSubmit = async (data: DataReset) => {
     try {
       const { confirmPassword, ...apiData } = data;
