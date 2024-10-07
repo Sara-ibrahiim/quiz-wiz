@@ -13,3 +13,9 @@ export const Auth_URls ={
     changePassword : `${Base_Auth}/change-password`,
     logout: `${Base_Auth}/logout`,
 }
+
+const Base_Groups= `${Base_Url}/group`;
+
+export const Groups_URls ={
+    getGroupsList : `${Base_Groups}`,
+}

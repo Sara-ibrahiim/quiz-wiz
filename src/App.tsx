@@ -7,6 +7,7 @@ import ResetPassword from "./modules/auth/ResetPassword/ResetPassword";
 import ChangePassword from "./modules/auth/ChangePassword/ChangePassword";
 import MasterLayout from "./layouts/MasterLayout";
 import Homepage from "./modules/instructor/home/Homepage";
+import ListGroups from "./modules/instructor/ListGroups/ListGroups";
 
 function App() {
   const routes = createBrowserRouter([
@@ -50,6 +51,10 @@ function App() {
         {
           path: "",
           element: <Homepage />,
+        },
+        {
+          path: "list-groups",
+          element: <ListGroups />,
         },
       ],
     },
