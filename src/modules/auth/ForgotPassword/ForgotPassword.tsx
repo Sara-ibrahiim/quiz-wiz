@@ -35,7 +35,7 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="login-register-container h-full flex flex-col justify-between  text-primaryDark dark:text-lightText">
+    <div className="h-full flex flex-col justify-between w-11/12  text-primaryDark dark:text-lightText">
       <AuthLogo />
 
       <div className="my-5 pt-10">
@@ -44,16 +44,20 @@ const ForgotPassword = () => {
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col w-full my-5 pt-10">
-          <label className="text-[18px] font-[700] leading-[20px] py-5 text-primaryDark dark:text-lightText">
+          <label
+            htmlFor="email"
+            className="text-[18px] font-[700] leading-[20px] py-5 text-primaryDark dark:text-lightText"
+          >
             Email Address
           </label>
-          <div className="relative w-full mt-2">
-            <MdEmail className="absolute left-1 top-1/2 text-3xl transform -translate-y-1/2 text-primaryDark dark:text-lightText" />
+          <div className="relative flex items-center xs:text-xs border-2 mb-2  border-borderColor rounded-md p-3  dark:border-primaryLight">
+            <MdEmail className="absolute left-1 top-1/2 text-3xl  transform -translate-y-1/2 text-primaryDark dark:text-lightText" />
             <input
               {...register("email", EmailValidation)}
-              className="w-full border-[3px] border-primaryDark dark:border-lightText rounded-md p-3 pl-8 bg-transparent text-primaryDark dark:text-lightText placeholder-primaryDark dark:placeholder-lightText"
+              className="pl-10 bg-transparent border-none outline-none text-primaryDark dark:text-lightText placeholder:text-primaryDark dark:placeholder:text-primaryLight w-full"
               type="email"
               placeholder="Enter your email address"
+              id="email"
             />
           </div>
           {errors.email && (

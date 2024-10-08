@@ -59,11 +59,13 @@ const Navbar = () => {
               </a>
             </li>
 
-            <li
-              className="hover:dark:bg-gray-800 hover:bg-slate-200 rounded-sm cursor-pointer p-2"
-              onClick={toggleModal}
-            >
-              <a className="text-primaryDark dark:text-lightText">Logout</a>
+            <li className="hover:dark:bg-gray-800 hover:bg-slate-200 rounded-sm cursor-pointer p-2">
+              <button
+                onClick={toggleModal}
+                className="text-primaryDark dark:text-lightText"
+              >
+                Logout
+              </button>
             </li>
           </ul>
         )}
