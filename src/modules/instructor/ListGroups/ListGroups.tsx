@@ -7,6 +7,12 @@ import { fetchGroups } from "../../../store/ListGroupsSlice";
 import { AppDispatch, RootState } from "../../../store/store";
 import { toast } from "react-toastify";
 import { Button } from "@/components/ui/button";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+} from "@/components/ui/pagination";
 
 export default function GroupsList() {
   const dispatch = useDispatch<AppDispatch>();
@@ -45,7 +51,7 @@ export default function GroupsList() {
                   <div>
                     <h3 className="font-semibold">Group: {group.name}</h3>
                     <p className="text-sm text-gray-600">
-                      No. of students: {group.students}
+                      {group.students.length} of students: {group.max_students}
                     </p>
                   </div>
                   {/* Actions */}
@@ -63,12 +69,21 @@ export default function GroupsList() {
               </div>
             ))}
           </div>
-          <div className="flex justify-center p-3 mt-4 gap-2">
-            {[1, 2, 3].map((page) => (
-              <button key={page} className="px-3 py-1 border rounded-md">
-                {page}
-              </button>
-            ))}
+          {/* Pagination */}
+          <div className="p-3 mt-4">
+            <Pagination>
+              <PaginationContent>
+                <PaginationItem className="border rounded-md">
+                  <PaginationLink href="#">1</PaginationLink>
+                </PaginationItem>
+                <PaginationItem className="border rounded-md">
+                  <PaginationLink href="#">2</PaginationLink>
+                </PaginationItem>
+                <PaginationItem className="border rounded-md">
+                  <PaginationLink href="#">3</PaginationLink>
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
           </div>
         </div>
       )}
