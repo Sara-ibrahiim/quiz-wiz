@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchGroups } from "../../../store/ListGroupsSlice";
 import { AppDispatch, RootState } from "../../../store/store";
 import { toast } from "react-toastify";
+import { Button } from "@/components/ui/button";
 
 export default function GroupsList() {
   const dispatch = useDispatch<AppDispatch>();
@@ -31,10 +32,10 @@ export default function GroupsList() {
         <div className="container mx-auto p-4">
           <div className="flex justify-between items-center mb-4">
             <h1 className="text-2xl font-bold">Groups list</h1>
-            <button className="bg-black text-white px-4 py-2 rounded-md flex items-center gap-2">
+            <Button className="bg-black text-white px-4 py-2 rounded-md flex items-center gap-2">
               <IoAddCircle size={22} />
               Add Group
-            </button>
+            </Button>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {groups.map((group, index) => (

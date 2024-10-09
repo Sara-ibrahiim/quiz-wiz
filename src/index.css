@@ -34,3 +34,9 @@ input:-webkit-autofill::first-line {
 .master-layout {
   height: calc(100vh - 76px);
 }
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}
