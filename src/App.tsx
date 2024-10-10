@@ -7,6 +7,8 @@ import ResetPassword from "./modules/auth/ResetPassword/ResetPassword";
 import ChangePassword from "./modules/auth/ChangePassword/ChangePassword";
 import MasterLayout from "./layouts/MasterLayout";
 import Homepage from "./modules/instructor/home/Homepage";
+import Quizzes from "./modules/instructor/Quizzes/Quizzes";
+import QuestionBank from "./modules/instructor/Question Bank/QuestionBank";
 
 function App() {
   const routes = createBrowserRouter([
@@ -50,6 +52,14 @@ function App() {
         {
           path: "",
           element: <Homepage />,
+        },
+        {
+          path: "Quizzes",
+          element: <Quizzes />,
+        },
+        {
+          path: "Question-Bank",
+          element: <QuestionBank />,
         },
       ],
     },
