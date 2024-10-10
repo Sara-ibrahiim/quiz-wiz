@@ -1,9 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FaPenToSquare } from "react-icons/fa6";
 import { FiTrash2 } from "react-icons/fi";
 import { IoAddCircle } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchGroups } from "../../../store/ListGroupsSlice";
+import { deleteGroup, fetchGroups } from "../../../store/groupSlice";
 import { AppDispatch, RootState } from "../../../store/store";
 import { toast } from "react-toastify";
 import { Button } from "@/components/ui/button";
@@ -13,12 +13,25 @@ import {
   PaginationItem,
   PaginationLink,
 } from "@/components/ui/pagination";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import NewGroupDialog from "@/components/GroupDialog";
 
 export default function GroupsList() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const [isUpdate, setIsUpdate] = useState(false)
+  const [IdUpdate, setIdUpdate] = useState<string|null>(null)
   const dispatch = useDispatch<AppDispatch>();
-  const { groups, status, error } = useSelector<RootState>(
-    (store) => store.listGroups
-  );
+  const { groups, status, message } = useSelector((store: RootState) => store.groups);
 
   useEffect(() => {
     if (status === "idle") {
@@ -26,8 +39,27 @@ export default function GroupsList() {
     }
   }, [status, dispatch]);
 
-  if (error) {
-    toast.error(error);
+  if (status == "rejected") {
+    toast.error(message);
+  }
+
+  if (status == "succeeded") {
+    toast.error(message);
+  }
+
+  const handleDelete = (id: string) => {
+    dispatch(deleteGroup(id));
+  };
+
+  const handleIsUpdate = (id: string)=>{
+    setIsUpdate(true);
+    setIsDialogOpen(true)
+    setIdUpdate(id)
+  }
+
+  const handleIsAdd = ()=>{
+    setIsUpdate(false);
+    setIsDialogOpen(true)
   }
 
   return (
@@ -38,7 +70,7 @@ export default function GroupsList() {
         <div className="container mx-auto p-4">
           <div className="flex justify-between items-center mb-4">
             <h1 className="text-2xl font-bold">Groups list</h1>
-            <Button className="bg-black text-white px-4 py-2 rounded-md flex items-center gap-2">
+            <Button onClick={handleIsAdd} className="bg-black text-white px-4 py-2 rounded-md flex items-center gap-2">
               <IoAddCircle size={22} />
               Add Group
             </Button>
@@ -51,17 +83,43 @@ export default function GroupsList() {
                   <div>
                     <h3 className="font-semibold">Group: {group.name}</h3>
                     <p className="text-sm text-gray-600">
-                      {group.students.length} of students: {group.max_students}
+                      {group.students.length} of students: {group.max_students} {/* TO DO */} 
                     </p>
                   </div>
                   {/* Actions */}
                   <div className="flex gap-2">
-                    <button className="p-2 hover:bg-gray-200 rounded hover:text-green-400">
-                      <FaPenToSquare className="h-4 w-4" />
-                      <span className="sr-only">Edit</span>
-                    </button>
+                      <Button onClick={()=>handleIsUpdate(group._id)} className="p-2 hover:bg-gray-200 rounded hover:text-green-400">
+                        <FaPenToSquare className="h-4 w-4" />
+                        <span className="sr-only">Edit</span>
+                      </Button>
+                      <NewGroupDialog IdUpdate={IdUpdate} isUpdate={isUpdate} isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} />
+                    {/* Delete action */}
                     <button className="p-2 hover:bg-gray-200 rounded hover:text-red-400">
-                      <FiTrash2 className="h-4 w-4" />
+                      <AlertDialog>
+                        <AlertDialogTrigger>
+                          <FiTrash2 className="h-4 w-4" />
+                        </AlertDialogTrigger>
+                        <AlertDialogContent>
+                          <AlertDialogHeader>
+                            <AlertDialogTitle>
+                              Are you absolutely sure?
+                            </AlertDialogTitle>
+                            <AlertDialogDescription>
+                              This action cannot be undone. This will
+                              permanently delete your account and remove your
+                              data from our servers.
+                            </AlertDialogDescription>
+                          </AlertDialogHeader>
+                          <AlertDialogFooter>
+                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                            <AlertDialogAction
+                              onClick={() => handleDelete(group._id)}
+                            >
+                              Continue
+                            </AlertDialogAction>
+                          </AlertDialogFooter>
+                        </AlertDialogContent>
+                      </AlertDialog>
                       <span className="sr-only">Delete</span>
                     </button>
                   </div>
