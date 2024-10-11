@@ -9,6 +9,7 @@ import MasterLayout from "./layouts/MasterLayout";
 import Homepage from "./modules/instructor/home/Homepage";
 import Quizzes from "./modules/instructor/Quizzes/Quizzes";
 import QuestionBank from "./modules/instructor/Question Bank/QuestionBank";
+import ListGroups from "./modules/instructor/ListGroups/ListGroups";
 
 function App() {
   const routes = createBrowserRouter([
@@ -60,6 +61,8 @@ function App() {
         {
           path: "Question-Bank",
           element: <QuestionBank />,
+          path: "list-groups",
+          element: <ListGroups />,
         },
       ],
     },
