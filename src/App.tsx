@@ -55,15 +55,14 @@ function App() {
           element: <Homepage />,
         },
         {
-          path: "Quizzes",
+          path: "quizzes",
           element: <Quizzes />,
         },
         {
-          path: "Question-Bank",
+          path: "question-bank",
           element: <QuestionBank />,
-          path: "list-groups",
-          element: <ListGroups />,
         },
+        { path: "list-groups", element: <ListGroups /> },
       ],
     },
   ]);
