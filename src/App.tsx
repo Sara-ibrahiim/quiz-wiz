@@ -7,6 +7,8 @@ import ResetPassword from "./modules/auth/ResetPassword/ResetPassword";
 import ChangePassword from "./modules/auth/ChangePassword/ChangePassword";
 import MasterLayout from "./layouts/MasterLayout";
 import Homepage from "./modules/instructor/home/Homepage";
+import Quizzes from "./modules/instructor/Quizzes/Quizzes";
+import QuestionBank from "./modules/instructor/Question Bank/QuestionBank";
 import ListGroups from "./modules/instructor/ListGroups/ListGroups";
 
 function App() {
@@ -53,6 +55,12 @@ function App() {
           element: <Homepage />,
         },
         {
+          path: "Quizzes",
+          element: <Quizzes />,
+        },
+        {
+          path: "Question-Bank",
+          element: <QuestionBank />,
           path: "list-groups",
           element: <ListGroups />,
         },
