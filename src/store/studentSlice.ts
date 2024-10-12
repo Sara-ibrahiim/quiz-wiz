@@ -2,10 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios';
 import { Students_URls } from '../constants/End-points';
-
-interface ErrorPayload {
-  message: string;
-}
+import { ErrorPayload, Student, StudentsState } from '@/utils/interfaces';
 
 // fetch Students
 export const fetchStudents = createAsyncThunk<Student[], void, { rejectValue: ErrorPayload }>(
@@ -26,16 +23,6 @@ export const fetchStudents = createAsyncThunk<Student[], void, { rejectValue: Er
     }
   }
 );
-
-interface Student {
-  _id: string;
-}
-
-interface StudentsState {
-  students: Student[]
-  status: 'idle' | 'pending' | 'succeeded' | 'rejected'
-  message: string | null
-}
 
 const initialState: StudentsState = {
   students: [],

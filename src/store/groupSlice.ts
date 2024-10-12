@@ -2,29 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios';
 import { Groups_URls } from '../constants/End-points';
-
-interface ErrorPayload {
-  message: string;
-}
-
-interface Group {
-  name: string;
-  students: [];
-  _id: string;
-  message: string;
-}
-
-interface GroupsState {
-  groups: Group[]
-  status: 'idle' | 'pending' | 'succeeded' | 'rejected'
-  message: string | null
-}
-
-const initialState: GroupsState = {
-  groups: [],
-  status: 'idle',
-  message: null,
-}
+import { ErrorPayload, Group, GroupsState } from '@/utils/interfaces';
 
 // fetch Groups
 export const fetchGroups = createAsyncThunk<Group[], void, { rejectValue: ErrorPayload }>(
@@ -106,6 +84,12 @@ export const deleteGroup = createAsyncThunk<Group, string, { rejectValue: ErrorP
   }
 );
 
+const initialState: GroupsState = {
+  groups: [],
+  status: 'idle',
+  message: null,
+}
+
 const groupsSlice = createSlice({
   name: 'groups',
   initialState,
@@ -132,7 +116,7 @@ const groupsSlice = createSlice({
       })
       .addCase(addGroup.fulfilled, (state, action) => {
         state.status = 'succeeded'
-        state.message = action.payload.message
+        state.message = action.payload?.message ?? 'Unknown Error'
         state.groups.push(action.payload)
       })
       .addCase(addGroup.rejected, (state, action) => {        
@@ -145,8 +129,8 @@ const groupsSlice = createSlice({
       })
       .addCase(updateGroup.fulfilled, (state, action) => {
         state.status = 'succeeded'
-        state.message = action.payload.message
-        state.groups = state.groups.filter(group => group.id !== action.payload.id) // TO DO
+        state.message = action.payload?.message ?? 'Unknown Error'
+        state.groups = state.groups.filter(group => group._id !== action.payload._id) // TO DO
       })
       .addCase(updateGroup.rejected, (state, action) => {
         state.status = 'rejected'
@@ -158,8 +142,8 @@ const groupsSlice = createSlice({
       })
       .addCase(deleteGroup.fulfilled, (state, action) => {
         state.status = 'succeeded'
-        state.message = action.payload.message
-        state.groups = state.groups.filter((item) => item.id !== action.payload);// TO DO
+        state.message = action.payload?.message ?? 'Unknown Error'
+        state.groups = state.groups.filter((item) => item._id !== action.payload._id);// TO DO
       })
       .addCase(deleteGroup.rejected, (state, action) => {
         state.status = 'rejected'
