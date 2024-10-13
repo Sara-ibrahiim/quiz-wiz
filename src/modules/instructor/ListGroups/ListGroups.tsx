@@ -27,9 +27,9 @@ import {
 import NewGroupDialog from "@/components/GroupDialog";
 
 export default function GroupsList() {
-  const [isDialogOpen, setIsDialogOpen] = useState(false)
-  const [isUpdate, setIsUpdate] = useState(false)
-  const [IdUpdate, setIdUpdate] = useState<string|null>(null)
+  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
+  const [isUpdate, setIsUpdate] = useState<boolean>(false)
+  const [IdUpdate, setIdUpdate] = useState<string>('')
   const dispatch = useDispatch<AppDispatch>();
   const { groups, status, message } = useSelector((store: RootState) => store.groups);
 
@@ -47,17 +47,17 @@ export default function GroupsList() {
     toast.error(message);
   }
 
-  const handleDelete = (id: string) => {
+  const handleDelete = (id: string): void => {
     dispatch(deleteGroup(id));
   };
 
-  const handleIsUpdate = (id: string)=>{
+  const handleIsUpdate = (id: string): void =>{
     setIsUpdate(true);
     setIsDialogOpen(true)
     setIdUpdate(id)
   }
 
-  const handleIsAdd = ()=>{
+  const handleIsAdd = (): void =>{
     setIsUpdate(false);
     setIsDialogOpen(true)
   }
@@ -83,7 +83,7 @@ export default function GroupsList() {
                   <div>
                     <h3 className="font-semibold">Group: {group.name}</h3>
                     <p className="text-sm text-gray-600">
-                      {group.students.length} of students: {group.max_students} {/* TO DO */} 
+                      {group.students.length} of students: {group.max_students}
                     </p>
                   </div>
                   {/* Actions */}
@@ -106,8 +106,8 @@ export default function GroupsList() {
                             </AlertDialogTitle>
                             <AlertDialogDescription>
                               This action cannot be undone. This will
-                              permanently delete your account and remove your
-                              data from our servers.
+                              permanently delete your group and remove your
+                              group data from server.
                             </AlertDialogDescription>
                           </AlertDialogHeader>
                           <AlertDialogFooter>
@@ -115,7 +115,7 @@ export default function GroupsList() {
                             <AlertDialogAction
                               onClick={() => handleDelete(group._id)}
                             >
-                              Continue
+                              Delete
                             </AlertDialogAction>
                           </AlertDialogFooter>
                         </AlertDialogContent>

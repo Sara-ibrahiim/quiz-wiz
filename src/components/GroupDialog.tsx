@@ -19,20 +19,14 @@ export default function NewGroupDialog({ isOpen, onClose, isUpdate, IdUpdate }: 
           dispatch(fetchStudents());
         }
       }, [status, dispatch]);
-      
-      interface GroupData{
-        name: string;
-        students: []
-        _id: string;
-      }
 
       const {
         register,
         handleSubmit,
         formState: { errors },
-      } = useForm<GroupData>();
+      } = useForm();
 
-      const onSubmit = (data:GroupData) => {
+      const onSubmit = (data) => {
         if (isUpdate) {
           // dispatch update group
           dispatch(updateGroup({ data, id: IdUpdate }));
