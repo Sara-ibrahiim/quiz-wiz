@@ -81,9 +81,9 @@ export default function GroupsList() {
                 <div className="flex justify-between items-center">
                   {/* info */}
                   <div>
-                    <h3 className="font-semibold">Group: {group.name}</h3>
+                    <h3 className="font-semibold">Group: {group?.name}</h3>
                     <p className="text-sm text-gray-600">
-                      {group.students.length} of students: {group.max_students}
+                      {group.students?.length} of students: {group.max_students}
                     </p>
                   </div>
                   {/* Actions */}

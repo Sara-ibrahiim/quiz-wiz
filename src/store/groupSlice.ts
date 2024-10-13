@@ -104,7 +104,7 @@ const groupsSlice = createSlice({
       })
       .addCase(fetchGroups.fulfilled, (state, action) => {
         state.status = 'succeeded'
-        state.groups.push(...action.payload)
+        state.groups = action.payload
       })
       .addCase(fetchGroups.rejected, (state, action) => {        
         state.status = 'rejected'
@@ -117,7 +117,7 @@ const groupsSlice = createSlice({
       .addCase(addGroup.fulfilled, (state, action) => {
         state.status = 'succeeded'
         state.message = action.payload?.message ?? 'Unknown Error'
-        state.groups.push(action.payload)
+        state.groups.push(action.payload.data)
       })
       .addCase(addGroup.rejected, (state, action) => {        
         state.status = 'rejected'
@@ -130,7 +130,10 @@ const groupsSlice = createSlice({
       .addCase(updateGroup.fulfilled, (state, action) => {
         state.status = 'succeeded'
         state.message = action.payload?.message ?? 'Unknown Error'
-        state.groups = state.groups.filter(group => group._id !== action.payload._id) // TO DO
+        const index = state.groups.findIndex((group) => group._id === action.payload.data._id);
+        if (index !== -1) {
+          state.groups[index] = action.payload.data;
+        }
       })
       .addCase(updateGroup.rejected, (state, action) => {
         state.status = 'rejected'
@@ -143,7 +146,7 @@ const groupsSlice = createSlice({
       .addCase(deleteGroup.fulfilled, (state, action) => {
         state.status = 'succeeded'
         state.message = action.payload?.message ?? 'Unknown Error'
-        state.groups = state.groups.filter((item) => item._id !== action.payload._id);// TO DO
+        state.groups = state.groups.filter((group) => group._id !== action.payload.data._id);
       })
       .addCase(deleteGroup.rejected, (state, action) => {
         state.status = 'rejected'
