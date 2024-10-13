@@ -1,11 +1,4 @@
-import {
-  FaEnvelope,
-  FaEye,
-  FaEyeSlash,
-  FaKey,
-  FaUser,
-  FaUsers,
-} from "react-icons/fa";
+import { FaEnvelope, FaEye, FaEyeSlash, FaKey, FaUser } from "react-icons/fa";
 import { RegisterFormData, RegisterFormProps } from "../../../utils/interfaces";
 import { SubmitHandler, useForm } from "react-hook-form";
 import AuthButton from "../../../components/AuthButton";
@@ -19,7 +12,7 @@ import {
 } from "../../../constants/Validation";
 
 const RegisterForm: React.FC<RegisterFormProps> = ({ setMode }) => {
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false); // Password visibility state
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const {
     register,
@@ -29,7 +22,12 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ setMode }) => {
 
   const onSubmit: SubmitHandler<RegisterFormData> = async (data) => {
     try {
-      await axios.post(Auth_URls.register, data);
+      const updatedData = {
+        ...data,
+        role: "Student",
+      };
+
+      await axios.post(Auth_URls.register, updatedData);
       toast.success("Account Created Successfully. Please log in.");
       setMode("Login");
     } catch (error) {
@@ -45,7 +43,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ setMode }) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col w-11/12 mt-5 gap-3 mx-auto"
+      className="flex flex-col w-11/12 mt-5 gap-8 mx-auto pt-14"
     >
       {/* First Name */}
       <div className="flex gap-10">
@@ -101,26 +99,6 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ setMode }) => {
         {errors.email && (
           <span className="dark:text-red-400 text-red-600 text-sm">
             {errors.email.message}
-          </span>
-        )}
-      </div>
-
-      {/* Role Selection */}
-      <div>
-        <div className="relative flex items-center border-2 mb-2 border-borderColor rounded-md p-3  dark:border-primaryLight">
-          <FaUsers className="absolute text-2xl left-4 text-primaryDark dark:text-lightText" />
-          <select
-            className="pl-10 bg-transparent  text-primaryDark dark:text-lightText border-none outline-none w-full"
-            {...register("role")}
-            defaultValue="Student"
-            disabled
-          >
-            <option value="Student">Signing up as Student</option>
-          </select>
-        </div>
-        {errors.role && (
-          <span className="dark:text-red-400 text-red-600 text-sm">
-            {errors.role.message}
           </span>
         )}
       </div>

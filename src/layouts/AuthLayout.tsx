@@ -4,7 +4,6 @@ import ThemeToggle from "../modules/theme/ThemeToggle";
 
 const AuthLayout = () => {
   return (
-
     <div className="relative flex gap-10 xl:ps-8 pt-6 pb-3 justify-center items-start bg-primaryLight dark:bg-primaryDark text-primaryDark dark:text-primaryLight min-h-screen">
       <span className="absolute top-3 right-5">
         <ThemeToggle />
