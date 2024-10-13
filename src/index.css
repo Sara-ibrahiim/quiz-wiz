@@ -1,11 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 
 body {
-  font-family: "Nunito", sans-serif;
+  font-family: "Nunito", sans-serif !important;
 }
+
 .logo .icon {
   margin-right: -8px;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #f2f2f2 inset !important;
+  box-shadow: 0 0 0px 1000px #f2f2f2 inset !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+html.dark input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #0d1321 inset !important;
+  box-shadow: 0 0 0px 1000px #0d1321 inset !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+html.dark input:-webkit-autofill::first-line {
+  color: tra !important;
+}
+
+input:-webkit-autofill::first-line {
+  color: transparent !important;
+}
+
+.master-layout {
+  height: calc(100vh - 76px);
+}
+
+bordColor {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
 }

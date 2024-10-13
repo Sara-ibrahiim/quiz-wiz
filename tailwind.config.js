@@ -4,6 +4,7 @@ export default {
   darkMode: "class",
   theme: {
     extend: {
+      screens: { xs: { max: "639px" } },
       colors: {
         // Base colors for light theme
         primaryDark: "#0D1321",
@@ -19,5 +20,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };
