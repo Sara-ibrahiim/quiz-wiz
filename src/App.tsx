@@ -62,7 +62,7 @@ function App() {
           path: "question-bank",
           element: <QuestionBank />,
         },
-        { path: "list-groups", element: <ListGroups /> },
+        { path: "groups", element: <ListGroups /> },
       ],
     },
   ]);
