@@ -104,9 +104,12 @@ useEffect(() => {
 
     <div className="w-full ">
     <div className='flex px-2  py-1'>
-        <h3 className=' text-primaryDark dark:text-lightText font-medium text-xl'>Top 5 Students </h3>  
-        <h3 className=' text-primaryDark dark:text-lightText text-sm ml-auto mt-1'>All Students</h3>
-        <FaLongArrowAltRight className='text-[#C5D86D] text-xl ms-1  mt-1 cursor-pointer' />
+        <h3 className=' text-primaryDark dark:text-lightText font-medium text-xl'>Top 5 Students </h3>
+        <div className='flex ml-auto cursor-pointer'>
+        <h3 className=' text-primaryDark dark:text-lightText text-sm ml-auto mt-1 '>All Students</h3>
+        <FaLongArrowAltRight className='text-[#C5D86D] text-xl ms-1  mt-1 ' />
+          </div>  
+        
       </div>
 
 {student.map((user:any)=>(

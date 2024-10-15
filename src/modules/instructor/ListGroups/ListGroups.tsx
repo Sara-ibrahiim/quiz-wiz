@@ -7,12 +7,7 @@ import { deleteGroup, fetchGroups } from "../../../store/groupSlice";
 import { AppDispatch, RootState } from "../../../store/store";
 import { toast } from "react-toastify";
 import { Button } from "@/components/ui/button";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-} from "@/components/ui/pagination";
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -25,6 +20,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import NewGroupDialog from "@/components/GroupDialog";
+import PaginationItems from "@/components/Pagination";
 
 export default function GroupsList() {
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
@@ -32,6 +28,17 @@ export default function GroupsList() {
   const [IdUpdate, setIdUpdate] = useState<string>('')
   const dispatch = useDispatch<AppDispatch>();
   const { groups, status, message } = useSelector((store: RootState) => store.groups);
+  const [currentPage, setCurrentPage] = useState(1); // Active page number
+  const [groupsPerPage] = useState(10); // Number of items per page
+
+    // Get current groups for the current page
+    const indexOfLastGroup = currentPage * groupsPerPage;
+    const indexOfFirstGroup = indexOfLastGroup - groupsPerPage;
+    const currentGroups = groups.slice(indexOfFirstGroup, indexOfLastGroup);
+    // Change page
+    const paginate = (pageNumber: number) => {
+      setCurrentPage(pageNumber);
+    };
 
   useEffect(() => {
     if (status === "idle") {
@@ -76,21 +83,21 @@ export default function GroupsList() {
             </Button>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {groups.map((group, index) => (
+            {currentGroups.map((group, index) => (
               <div key={index} className="p-4 border rounded-lg shadow-sm">
                 <div className="flex justify-between items-center">
                   {/* info */}
                   <div>
-                    <h3 className="font-semibold">Group: {group.name}</h3>
+                    <h3 className="font-semibold">Group: {group?.name}</h3>
                     <p className="text-sm text-gray-600">
-                      {group.students.length} of students: {group.max_students}
+                      {group.students?.length} of students: {group.max_students}
                     </p>
                   </div>
                   {/* Actions */}
                   <div className="flex gap-2">
                       <Button onClick={()=>handleIsUpdate(group._id)} className="p-2 hover:bg-gray-200 rounded hover:text-green-400">
                         <FaPenToSquare className="h-4 w-4" />
-                        <span className="sr-only">Edit</span>
+                        <span className="sr-only">{isUpdate? 'Edit' : 'add'}</span>
                       </Button>
                       <NewGroupDialog IdUpdate={IdUpdate} isUpdate={isUpdate} isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} />
                     {/* Delete action */}
@@ -128,20 +135,13 @@ export default function GroupsList() {
             ))}
           </div>
           {/* Pagination */}
-          <div className="p-3 mt-4">
-            <Pagination>
-              <PaginationContent>
-                <PaginationItem className="border rounded-md">
-                  <PaginationLink href="#">1</PaginationLink>
-                </PaginationItem>
-                <PaginationItem className="border rounded-md">
-                  <PaginationLink href="#">2</PaginationLink>
-                </PaginationItem>
-                <PaginationItem className="border rounded-md">
-                  <PaginationLink href="#">3</PaginationLink>
-                </PaginationItem>
-              </PaginationContent>
-            </Pagination>
+          <div>
+            <PaginationItems
+              totalGroups={groups.length}
+              itemsPerPage={groupsPerPage}
+              paginate={paginate}
+              currentPage={currentPage}
+            />
           </div>
         </div>
       )}
