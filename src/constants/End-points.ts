@@ -18,6 +18,7 @@ export const Question_URls = {
   getAll: `${Base_Ques}`,
   create: `${Base_Ques}`,
   delete: (id: string) => `${Base_Ques}/${id}`,
+  update: (id: string) => `${Base_Ques}/${id}`,
 };
 
 const Base_Groups = `${Base_Url}/group`;
