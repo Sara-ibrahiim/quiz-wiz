@@ -36,9 +36,7 @@ input:-webkit-autofill::first-line {
   height: calc(100vh - 76px);
 }
 
-bordColor {
-  background-color: rgba(0, 0, 0, 0.2);
-}
+
 @layer base {
   :root {
     --radius: 0.5rem;
