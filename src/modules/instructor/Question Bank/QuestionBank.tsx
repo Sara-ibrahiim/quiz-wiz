@@ -47,7 +47,6 @@ export default function QuestionBank() {
       });
       setAllQuestions(filterdArray);
     } catch (error) {
-      console.log(error);
       toast.error("An unexpected error occurred");
     }
   };
@@ -59,11 +58,13 @@ export default function QuestionBank() {
   return (
     <div>
       <div className="p-4">
-        <div className="border-2 bordColor rounded-md p-5 ">
+        <div className="border-2 rounded-md p-5 ">
           <div className="flex justify-between items-center">
-            <h2 className="text-2xl font-bold">Bank Of Questions</h2>
+            <h2 className="text-2xl font-bold text-primaryDark dark:text-accent">
+              Bank Of Questions
+            </h2>
             <button
-              className="flex items-center border-2 bordColor rounded-full px-2 py-1"
+              className="flex items-center border-2 rounded-full px-2 py-1"
               onClick={() => {
                 setModalOpen(true);
                 setTile("Set up a new question");
@@ -79,19 +80,19 @@ export default function QuestionBank() {
           <table className="table-auto mt-5 border-separate border-spacing-y-2">
             <thead>
               <tr className="space-x-4">
-                <th className="w-[30rem] bg-primaryDark text-lightText font-semibold p-1 text-left border-r-2 border-gray-300 rounded-tl-lg rounded-bl-md ">
+                <th className="w-[30rem] bg-primaryDark text-white dark:bg-primaryLight dark:text-primaryDark font-semibold p-1 text-left border-r-2 border-gray-300 rounded-tl-lg rounded-bl-md ">
                   Question Title
                 </th>
-                <th className="w-[20rem] bg-primaryDark text-lightText font-semibold p-1 text-left border-r-2 border-gray-300">
+                <th className="w-[20rem] bg-primaryDark text-white dark:bg-primaryLight dark:text-primaryDark font-semibold p-1 text-left border-r-2 border-gray-300">
                   Question Desc
                 </th>
-                <th className="w-[30rem] bg-primaryDark text-lightText font-semibold p-1 text-left border-r-2 border-gray-300">
+                <th className="w-[30rem] bg-primaryDark text-white dark:bg-primaryLight dark:text-primaryDark font-semibold p-1 text-left border-r-2 border-gray-300">
                   Question difficulty level
                 </th>
-                <th className="w-[20rem] bg-primaryDark text-lightText font-semibold p-1 text-left border-r-2 border-gray-300">
+                <th className="w-[20rem] bg-primaryDark text-white dark:bg-primaryLight dark:text-primaryDark font-semibold p-1 text-left border-r-2 border-gray-300">
                   Date
                 </th>
-                <th className="w-[20rem] bg-primaryDark text-lightText font-semibold p-1 text-left border-r-2 border-gray-300 rounded-tr-md rounded-br-md">
+                <th className="w-[20rem] bg-primaryDark text-white dark:bg-primaryLight dark:text-primaryDark font-semibold p-1 text-left border-r-2 border-gray-300 rounded-tr-md rounded-br-md">
                   Actions
                 </th>
               </tr>
@@ -179,14 +180,13 @@ const PopupModal = ({
         delete data.answerC;
         delete data.answerD;
 
-        const res = await axios.post(`${Question_URls.create}`, data, {
+        await axios.post(`${Question_URls.create}`, data, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
         });
-        console.log(res);
         toast.success("Question added successfully");
-        reset(git);
+        reset();
         onClose();
         fireFunction();
       } catch (error) {
@@ -218,9 +218,11 @@ const PopupModal = ({
 
   return (
     <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
-      <div className="bg-white p-6 rounded-lg shadow-lg max-w-2xl w-full">
+      <div className="bg-white p-6 rounded-lg shadow-lg max-w-2xl w-full ">
         <div className="flex justify-between items-center mb-4 border-b-2 bordColor">
-          <h3 className="text-lg font-semibold">{title}</h3>
+          <h3 className="text-lg font-semibold text-primaryDark dark:text-accent">
+            {title}
+          </h3>
 
           {/* The Button to call the right function */}
           <div>
@@ -274,7 +276,7 @@ const PopupModal = ({
         <div>
           {title == "Delete Question" ? (
             <>
-              <p className="text-center text-1xl font-bold mb-3">
+              <p className="text-center text-1xl font-bold mb-3 text-primaryDark dark:text-accent">
                 Are you sure you want to delete this item?
               </p>
               <img
@@ -285,11 +287,13 @@ const PopupModal = ({
             </>
           ) : title == "Set up a new question" || title == "Update question" ? (
             <>
-              <form className="p-4">
-                <p className="mb-4 text-lg font-semibold">Details</p>
+              <form className="p-4 ">
+                <p className="mb-4 text-lg font-semibold text-primaryDark dark:text-accent">
+                  Details
+                </p>
 
                 <div className="flex items-center mb-4 w-full">
-                  <span className="bg-secondaryLight text-white px-3 py-2 rounded-l-md">
+                  <span className="bg-secondaryLight dark:bg-gray-700  text-primaryDark dark:text-accent font-bold px-3 py-2 rounded-l-md">
                     Title:
                   </span>
                   <input
@@ -299,12 +303,12 @@ const PopupModal = ({
                     }
                     readOnly={selectedQuestion ? true : false}
                     {...register("title")}
-                    className="flex-1 p-2 border border-gray-300 rounded-r-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="flex-1 p-2 border border-gray-300 rounded-r-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-primaryDark "
                   />
                 </div>
 
                 <div className="flex items-center mb-4 w-full">
-                  <span className="bg-secondaryLight text-white px-3 py-2 rounded-l-md">
+                  <span className="bg-secondaryLight dark:bg-gray-700  text-primaryDark dark:text-accent font-bold px-3 py-2 rounded-l-md">
                     Description:
                   </span>
                   <input
@@ -314,13 +318,13 @@ const PopupModal = ({
                       selectedQuestion ? selectedQuestion.description : ""
                     }
                     {...register("description")}
-                    className="flex-1 p-2 border border-gray-300 rounded-r-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="flex-1 p-2 border border-gray-300 rounded-r-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-primaryDark"
                   />
                 </div>
 
                 <div className="flex mb-4">
                   <div className="flex items-center w-1/2 pr-2">
-                    <span className="bg-secondaryLight text-white px-3 py-2 rounded-l-md">
+                    <span className="bg-secondaryLight dark:bg-gray-700  text-primaryDark dark:text-accent font-bold px-3 py-2 rounded-l-md">
                       a:
                     </span>
                     <input
@@ -330,12 +334,12 @@ const PopupModal = ({
                         selectedQuestion ? selectedQuestion.options.A : ""
                       }
                       {...register("answerA")}
-                      className="flex-1 p-2 border border-gray-300 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="flex-1 p-2 border border-gray-300 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-primaryDark"
                     />
                   </div>
 
                   <div className="flex items-center w-1/2 pl-2">
-                    <span className="bg-secondaryLight text-white px-3 py-2 rounded-l-md">
+                    <span className="bg-secondaryLight dark:bg-gray-700  text-primaryDark dark:text-accent font-bold px-3 py-2 rounded-l-md">
                       b:
                     </span>
                     <input
@@ -345,14 +349,14 @@ const PopupModal = ({
                         selectedQuestion ? selectedQuestion.options.B : ""
                       }
                       {...register("answerB")}
-                      className="flex-1 p-2 border border-gray-300 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="flex-1 p-2 border border-gray-300 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-primaryDark"
                     />
                   </div>
                 </div>
 
                 <div className="flex mb-4">
                   <div className="flex items-center w-1/2 pr-2">
-                    <span className="bg-secondaryLight text-white px-3 py-2 rounded-l-md">
+                    <span className="bg-secondaryLight dark:bg-gray-700  text-primaryDark dark:text-accent font-bold px-3 py-2 rounded-l-md">
                       c:
                     </span>
                     <input
@@ -362,12 +366,12 @@ const PopupModal = ({
                         selectedQuestion ? selectedQuestion.options.C : ""
                       }
                       {...register("answerC")}
-                      className="flex-1 p-2 border border-gray-300 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="flex-1 p-2 border border-gray-300 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-primaryDark"
                     />
                   </div>
 
                   <div className="flex items-center w-1/2 pl-2">
-                    <span className="bg-secondaryLight text-white px-3 py-2 rounded-l-md">
+                    <span className="bg-secondaryLight dark:bg-gray-700  text-primaryDark dark:text-accent font-bold px-3 py-2 rounded-l-md">
                       d:
                     </span>
                     <input
@@ -377,14 +381,14 @@ const PopupModal = ({
                         selectedQuestion ? selectedQuestion.options.D : ""
                       }
                       {...register("answerD")}
-                      className="flex-1 p-2 border border-gray-300 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="flex-1 p-2 border border-gray-300 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-primaryDark"
                     />
                   </div>
                 </div>
 
                 <div className="flex mb-4">
                   <div className="flex items-center pr-2 w-1/2">
-                    <span className="bg-secondaryLight text-white px-3 py-2 rounded-l-md whitespace-nowrap">
+                    <span className="bg-secondaryLight dark:bg-gray-700  text-primaryDark dark:text-accent font-bold px-3 py-2 rounded-l-md whitespace-nowrap">
                       Right Answer
                     </span>
                     <input
@@ -402,7 +406,7 @@ const PopupModal = ({
                           );
                         },
                       })}
-                      className="p-2 border border-gray-300 rounded-r-md w-20 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="p-2 border border-gray-300 rounded-r-md w-20 focus:outline-none focus:ring-2 focus:ring-blue-500 text-primaryDark"
                     />
                     {errors.answer && (
                       <p className="text-red-500">{errors.answer.message}</p>
@@ -410,7 +414,7 @@ const PopupModal = ({
                   </div>
 
                   <div className="flex items-center pl-2">
-                    <span className="bg-secondaryLight text-white px-3 py-2 rounded-l-md whitespace-nowrap">
+                    <span className="bg-secondaryLight dark:bg-gray-700  text-primaryDark dark:text-accent font-bold px-3 py-2 rounded-l-md whitespace-nowrap">
                       Category Type
                     </span>
                     <select
@@ -419,7 +423,7 @@ const PopupModal = ({
                       defaultValue={
                         selectedQuestion ? selectedQuestion.type : ""
                       }
-                      className="p-2 border border-gray-300 rounded-r-md w-20 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="p-2 border border-gray-300 rounded-r-md w-20 focus:outline-none focus:ring-2 focus:ring-blue-500 text-primaryDark"
                     >
                       <option value="BE">BE</option>
                       <option value="FE">FE</option>
