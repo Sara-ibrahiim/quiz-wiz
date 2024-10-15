@@ -44,7 +44,7 @@ const studentSlice = createSlice({
       })
       .addCase(fetchStudents.fulfilled, (state, action) => {
         state.status = 'succeeded'
-        state.students.push(...action.payload)
+        state.students = action.payload
       })
       .addCase(fetchStudents.rejected, (state, action) => {        
         state.status = 'rejected'
