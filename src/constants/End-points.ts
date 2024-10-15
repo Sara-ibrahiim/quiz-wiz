@@ -1,4 +1,4 @@
-const Base_Url = "https://upskilling-egypt.com:3005/api";
+export const Base_Url = "https://upskilling-egypt.com:3005/api";
 // export const Base_Img_Url ="https://upskilling-egypt.com:3005/"
 
 const Base_Auth = `${Base_Url}/auth`;
@@ -33,4 +33,6 @@ const Base_Students = `${Base_Url}/student`;
 
 export const Students_URls = {
   getStudentsList: `${Base_Students}`,
+ topStudents: `${Base_Students}/top-five`,
+  studentsGetById:(id: string): string => `${Base_Students}/${id}`,
 };
