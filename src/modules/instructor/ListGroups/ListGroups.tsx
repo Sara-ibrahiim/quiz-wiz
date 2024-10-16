@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import NewGroupDialog from "@/components/GroupDialog";
 import PaginationItems from "@/components/Pagination";
+import LoadingPencil from "@/components/LoadingPencil/LoadingPencil";
 
 export default function GroupsList() {
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
@@ -74,7 +75,7 @@ export default function GroupsList() {
   return (
     <>
       {status === "pending" ? (
-        <h3>pending</h3>
+        <LoadingPencil />
       ) : (
         <div className="container mx-auto p-4">
           <div className="flex justify-between items-center mb-4">
