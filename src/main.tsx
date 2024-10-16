@@ -10,21 +10,19 @@ import AuthInitializer from "./modules/auth/AuthInitializer.ts";
 
 createRoot(document.getElementById("root")!).render(
   <Provider store={store}>
-
-    <AuthInitializer/>
-    <StrictMode>
-      <App />
-      <ToastContainer
-        position="top-right"
-        autoClose={3000} // Toast automatically closes after 5 seconds
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
+    <AuthInitializer />
+    <App />
+    <ToastContainer
+      position="top-right"
+      autoClose={3000} // Toast automatically closes after 5 seconds
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="colored"
+    />
   </Provider>
 );
