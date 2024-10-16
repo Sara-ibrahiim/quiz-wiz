@@ -6,9 +6,13 @@ import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import { createRoot } from "react-dom/client";
 import { store } from "./store/store.ts";
+import AuthInitializer from "./modules/auth/AuthInitializer.ts";
 
 createRoot(document.getElementById("root")!).render(
   <Provider store={store}>
+
+    <AuthInitializer/>
+    <StrictMode>
       <App />
       <ToastContainer
         position="top-right"
