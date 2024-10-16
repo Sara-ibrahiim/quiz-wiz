@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { FaPenToSquare } from "react-icons/fa6";
 import { FiTrash2 } from "react-icons/fi";
 import { IoAddCircle } from "react-icons/io5";
@@ -46,13 +46,15 @@ export default function GroupsList() {
     }
   }, [status, dispatch]);
 
-  if (status == "rejected") {
-    toast.error(message);
-  }
-
-  if (status == "succeeded") {
-    toast.error(message);
-  }
+  useMemo(() => {
+    if (status == "rejected") {
+      toast.error(message);
+    }
+  
+    if (status == "succeeded") {
+      toast.success(message);
+    }
+  }, [status, message])
 
   const handleDelete = (id: string): void => {
     dispatch(deleteGroup(id));
