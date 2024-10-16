@@ -34,6 +34,19 @@ const Base_Students = `${Base_Url}/student`;
 
 export const Students_URls = {
   getStudentsList: `${Base_Students}`,
- topStudents: `${Base_Students}/top-five`,
-  studentsGetById:(id: string): string => `${Base_Students}/${id}`,
+  topStudents: `${Base_Students}/top-five`,
+  studentsGetById: (id: string): string => `${Base_Students}/${id}`,
+};
+
+const Base_Quizes = `${Base_Url}/quiz`;
+
+export const QUIZES_URLS = {
+  getAllQuizes: `${Base_Quizes}`, // GET
+  createNewQuiz: `${Base_Quizes}`, // POST
+  getIncoming5Quizes: `${Base_Quizes}/incomming`, // GET
+  getLast5Quizes: `${Base_Quizes}/completed`, // GET
+  deleteQuizByID: (id: string) => `${Base_Quizes}/${id}`, // DEL
+  getQuizById: (id: string) => `${Base_Quizes}/${id}`, //GET
+  updateQuizById: (id: string) => `${Base_Quizes}/${id}`, //PUT
+  reasignQuizGroupById: (id: string) => `${Base_Quizes}/reassign/${id}`, //POST
 };
