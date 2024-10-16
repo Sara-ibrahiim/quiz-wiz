@@ -46,10 +46,10 @@ export default function NewGroupDialog({ isOpen, onClose, isUpdate, IdUpdate }: 
         {isUpdate ? <DialogTitle className="text-xl font-semibold">Update Group</DialogTitle>
                   : <DialogTitle className="text-xl font-semibold">Set up a new Group</DialogTitle>}
           <div className="absolute right-4 top-4 flex space-x-2">
-            <Button type="submit" size="icon" variant="ghost">
+            <Button type="submit" size="icon" variant="ghost" className="border">
               <Check className="h-4 w-4 text-green-500" />
             </Button>
-            <Button type="button" size="icon" variant="ghost" onClick={onClose}>
+            <Button type="button" size="icon" variant="ghost" onClick={onClose} className="border">
               <X className="h-4 w-4 text-red-500" />
             </Button>
           </div>
