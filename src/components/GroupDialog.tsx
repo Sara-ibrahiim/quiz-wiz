@@ -1,18 +1,19 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { X, Check } from "lucide-react"
+import { X, Check, ChevronDownIcon, CheckIcon } from "lucide-react"
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "@/store/store"
 import { addGroup, updateGroup } from "@/store/groupSlice"
 import { fetchStudents } from "@/store/studentSlice"
-import { useEffect } from "react"
-import { useForm } from "react-hook-form"
+import { useEffect, useState } from "react"
+import { Controller, useForm } from "react-hook-form"
 
 export default function NewGroupDialog({ isOpen, onClose, isUpdate, IdUpdate }: { isOpen: boolean; onClose: () => void; isUpdate: boolean; IdUpdate: string }) {
     const dispatch = useDispatch<AppDispatch>();
     const { students, status } = useSelector((state: RootState) => state.students);
+    const [isOpenOption, setIsOpenOption] = useState(false)
+    const toggleDropdown = () => setIsOpenOption(!isOpenOption)
 
     useEffect(() => {
         if (status === "idle") {
@@ -23,8 +24,24 @@ export default function NewGroupDialog({ isOpen, onClose, isUpdate, IdUpdate }: 
       const {
         register,
         handleSubmit,
+        control,
+        watch,
         formState: { errors },
-      } = useForm();
+      } = useForm({
+        defaultValues: {
+          students: [],
+          name: isUpdate ? '' : '',
+        }
+      });
+
+      const selectedOptions = watch('students')
+
+      const handleOptionClick = (student: string, onChange: (value: string[]) => void) => {        
+        const updatedOptions = selectedOptions.includes(student)
+        ? selectedOptions.filter(item => item !== student)
+        : [...selectedOptions, student]
+        onChange(updatedOptions)
+      }
 
       const onSubmit = (data) => {
         if (isUpdate) {
@@ -71,21 +88,50 @@ export default function NewGroupDialog({ isOpen, onClose, isUpdate, IdUpdate }: 
                 )}
             </div>
             <div>
-                <Select {...register("students")}>
-                <SelectTrigger className="w-full ">
-                    <SelectValue placeholder="List Students" />
-                </SelectTrigger>
-                <SelectContent>
-                    {students.slice(0, 5).map((student, index) => (
-                        <SelectItem key={index} value={student._id}>{student.first_name} {student.last_name}</SelectItem> // TO DO
-                    ))}
-                </SelectContent>
-                </Select>
-                {errors.students && (
-                    <span className="text-red-600 text-sm">
-                        {errors.students.message}
-                    </span>
+              <Controller
+                rules={{ required: "At least one student is required" }}
+                name="students"
+                control={control}
+                render={({ field: { onChange, value } }) => (
+                  <>
+            <button
+              type="button"
+              onClick={toggleDropdown}
+              className="w-full p-2 text-right bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            >
+              <span className="flex items-center justify-between">
+                {value?.length > 0 
+                  ? `selected ${value.length} students`
+                  : 'List Students'}
+                <ChevronDownIcon className="w-5 h-5 text-gray-400" />
+              </span>
+            </button>
+            {isOpenOption && (
+              <ul className="absolute z-10 w-full py-1 mt-1 overflow-auto bg-white border border-gray-300 rounded-md shadow-lg max-h-60">
+                {students.map((student, index) => (
+                  <li
+                    key={index}
+                    onClick={() => handleOptionClick(student._id, onChange)}
+                    className={`px-2 py-2 text-right cursor-pointer hover:bg-blue-100 flex items-center justify-between ${
+                      value.includes(student._id) ? 'bg-blue-200' : ''
+                    }`}
+                  >
+                    {student.first_name} {student.last_name}
+                    {value.includes(student._id) && (
+                      <CheckIcon className="w-5 h-5 text-blue-500" />
+                    )}
+                  </li>
+                ))}
+              </ul>
+            )}
+                  </>
                 )}
+              />
+              {errors.students && (
+                <span className="text-red-600 text-sm">
+                    {errors.students.message}
+                </span>
+              )}
             </div>
         </div>
       </form>
