@@ -5,12 +5,12 @@ interface AuthState {
   accessToken: string | null;
   refreshToken: string | null;
   profile: {
-    _id: string;
-    first_name: string;
-    last_name: string;
-    email: string;
-    status: string;
-    role: string;
+    _id?: string;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    status?: string;
+    role?: string;
   } | null;
 }
 
@@ -20,7 +20,7 @@ const initialState: AuthState = {
   profile: null,
 };
 
-const authSlice = createSlice({
+export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
@@ -43,6 +43,8 @@ const authSlice = createSlice({
     },
   },
 });
+
+
 
 export const { setAuth, clearAuth } = authSlice.actions;
 

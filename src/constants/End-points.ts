@@ -1,4 +1,4 @@
-const Base_Url = "https://upskilling-egypt.com:3005/api";
+export const Base_Url = "https://upskilling-egypt.com:3005/api";
 // export const Base_Img_Url ="https://upskilling-egypt.com:3005/"
 
 const Base_Auth = `${Base_Url}/auth`;
@@ -18,6 +18,7 @@ export const Question_URls = {
   getAll: `${Base_Ques}`,
   create: `${Base_Ques}`,
   delete: (id: string) => `${Base_Ques}/${id}`,
+  update: (id: string) => `${Base_Ques}/${id}`,
 };
 
 const Base_Groups = `${Base_Url}/group`;
@@ -33,4 +34,19 @@ const Base_Students = `${Base_Url}/student`;
 
 export const Students_URls = {
   getStudentsList: `${Base_Students}`,
+  topStudents: `${Base_Students}/top-five`,
+  studentsGetById: (id: string): string => `${Base_Students}/${id}`,
+};
+
+const Base_Quizes = `${Base_Url}/quiz`;
+
+export const QUIZES_URLS = {
+  getAllQuizes: `${Base_Quizes}`, // GET
+  createNewQuiz: `${Base_Quizes}`, // POST
+  getIncoming5Quizes: `${Base_Quizes}/incomming`, // GET
+  getLast5Quizes: `${Base_Quizes}/completed`, // GET
+  deleteQuizByID: (id: string) => `${Base_Quizes}/${id}`, // DEL
+  getQuizById: (id: string) => `${Base_Quizes}/${id}`, //GET
+  updateQuizById: (id: string) => `${Base_Quizes}/${id}`, //PUT
+  reasignQuizGroupById: (id: string) => `${Base_Quizes}/reassign/${id}`, //POST
 };
