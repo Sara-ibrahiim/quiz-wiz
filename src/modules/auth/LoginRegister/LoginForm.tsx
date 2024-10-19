@@ -6,7 +6,7 @@ import { EmailValidation } from "../../../constants/Validation";
 import { LoginFormData } from "../../../utils/interfaces";
 import React, { useState } from "react";
 import axios from "axios";
-import { setAuth } from "../authSlice";
+import { setAuth } from "../../../store/authSlice";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";

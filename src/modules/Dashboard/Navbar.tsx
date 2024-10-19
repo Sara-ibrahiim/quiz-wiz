@@ -2,10 +2,10 @@ import { FaUserCircle } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { clearAuth } from "../auth/authSlice";
+import { clearAuth } from "../../store/authSlice";
 import ThemeToggle from "../theme/ThemeToggle";
 import { RootState } from "@/store/store";
-import iconQuiz from "../../assets/iconQize.png"
+import iconQuiz from "../../assets/iconQize.png";
 import { BiSolidAlarmAdd } from "react-icons/bi";
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -14,8 +14,7 @@ const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-const profile = useSelector ((state:RootState)=>state.auth.profile)
-
+  const profile = useSelector((state: RootState) => state.auth.profile);
 
   // Handle logout
   const handleLogout = () => {
@@ -36,36 +35,36 @@ const profile = useSelector ((state:RootState)=>state.auth.profile)
 
   return (
     <div className="navbar    flex grid grid-cols-12 dark:bg-primaryDark text-primaryDark dark:text-lightText ps-1 border-b-[1px] border-[#ECECEC] pe-3">
-      
       <div className="flex-1 pt-5 xs:text-sm  md:col-span-7 sm:col-span-4 xs:col-span-3 text-primaryDark dark:text-lightText ms-3 font-bold mt-2 me-2">
-      Dashboard
+        Dashboard
       </div>
       <div className="md:col-span-3 sm:col-span-4 xs:col-span-4  md:ms-3  md:ml-auto">
-      <div className="flex md:mt-5 xs:mt-6 md:px-0 border-[1px] cursor-pointer md:ml-auto rounded-full md:pe-2 sm:mt-6 md:me-5 xs:w-11/12 sm:w-8/12 md:w-[200px]">
-
-      <BiSolidAlarmAdd  className=" md:ms-10 md:text-4xl xs:text-2xl  sm:text-3xl sm:ms-4" />
-      <p className="mt-1 ms-2 font-bold md:text-lg xs:text-sm sm:text-base">New Quiz</p>
+        <div className="flex md:mt-5 xs:mt-6 md:px-0 border-[1px] cursor-pointer md:ml-auto rounded-full md:pe-2 sm:mt-6 md:me-5 xs:w-11/12 sm:w-8/12 md:w-[200px]">
+          <BiSolidAlarmAdd className=" md:ms-10 md:text-4xl xs:text-2xl  sm:text-3xl sm:ms-4" />
+          <p className="mt-1 ms-2 font-bold md:text-lg xs:text-sm sm:text-base">
+            New Quiz
+          </p>
+        </div>
       </div>
-          
-        </div>
       <div className="md:relative md:col-span-2 sm:col-span-4 xs:col-span-3 xs:pt-3">
-        <div className="flex">
+        <div className="flex"></div>
 
-        </div>
-    
         {/* User Avatar Button */}
-
 
         <div className="flex items-center border-l-[1px] md:py-[15px] sm:py-[22px] xs:py-[7px] sm:pt-2  ">
           <div className="md:mx-6 xs:mx-2 sm:mx-4 font-bold">
-          <h3 className="xs:text-xs ms:text-sm">{profile?.first_name} {""}{profile?.last_name}</h3> 
-          <p className="text-[#C5D86D] text-sm xs:text-xs ms:text-sm">{profile?.role}</p>
+            <h3 className="xs:text-xs ms:text-sm">
+              {profile?.first_name} {""}
+              {profile?.last_name}
+            </h3>
+            <p className="text-[#C5D86D] text-sm xs:text-xs ms:text-sm">
+              {profile?.role}
+            </p>
           </div>
           <ThemeToggle />
- 
-          </div>
-      
-          {/* <button
+        </div>
+
+        {/* <button
             onClick={toggleDropdown}
             className="btn btn-ghost btn-circle avatar"
           >
@@ -74,7 +73,6 @@ const profile = useSelector ((state:RootState)=>state.auth.profile)
             </div>
           </button>
           <ThemeToggle /> */}
-        
 
         {/* Dropdown Menu (hidden by default) */}
         {/* {isDropdownOpen && (
@@ -96,7 +94,7 @@ const profile = useSelector ((state:RootState)=>state.auth.profile)
             </li>
           </ul>
         )}*/}
-      </div> 
+      </div>
 
       {/* Fullscreen Logout Confirmation Modal */}
       {/* {isModalOpen && (

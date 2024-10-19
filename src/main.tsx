@@ -1,6 +1,5 @@
 import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
-
 import App from "./App.tsx";
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
@@ -14,7 +13,7 @@ createRoot(document.getElementById("root")!).render(
     <App />
     <ToastContainer
       position="top-right"
-      autoClose={3000} // Toast automatically closes after 5 seconds
+      autoClose={3000}
       hideProgressBar={false}
       newestOnTop={false}
       closeOnClick
