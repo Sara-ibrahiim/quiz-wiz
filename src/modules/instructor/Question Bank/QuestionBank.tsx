@@ -166,7 +166,7 @@ const PopupModal = ({
     reset,
   } = useForm();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: any) => {
     if (title == "Set up a new question") {
       try {
         data.options = {
@@ -194,8 +194,7 @@ const PopupModal = ({
       }
     } else if (title == "Update question") {
       try {
-        console.log(data.answer);
-        const res = await axios.put(
+        await axios.put(
           `${Question_URls.update(selectedQuestion._id)}`,
           { answer: data.answer },
           {
@@ -204,7 +203,7 @@ const PopupModal = ({
             },
           }
         );
-        console.log(res);
+
         toast.success("Question Updated successfully");
         onClose();
         // fireFunction();
@@ -409,7 +408,9 @@ const PopupModal = ({
                       className="p-2 border border-gray-300 rounded-r-md w-20 focus:outline-none focus:ring-2 focus:ring-blue-500 text-primaryDark"
                     />
                     {errors.answer && (
-                      <p className="text-red-500">{errors.answer.message}</p>
+                      <p className="text-red-500">
+                        {errors.answer.message as string}
+                      </p>
                     )}
                   </div>
 
