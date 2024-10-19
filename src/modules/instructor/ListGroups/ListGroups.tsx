@@ -31,12 +31,14 @@ export default function GroupsList() {
   const { groups, status, message } = useSelector(
     (store: RootState) => store.groups
   );
-  const [currentPage, setCurrentPage] = useState(1);
-  const [groupsPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1); // Active page number
+  const [groupsPerPage] = useState(10); // Number of items per page
 
+  // Get current groups for the current page
   const indexOfLastGroup = currentPage * groupsPerPage;
   const indexOfFirstGroup = indexOfLastGroup - groupsPerPage;
   const currentGroups = groups.slice(indexOfFirstGroup, indexOfLastGroup);
+  // Change page
   const paginate = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };

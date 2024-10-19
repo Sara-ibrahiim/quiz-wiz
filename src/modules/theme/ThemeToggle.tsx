@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleTheme } from "./themeSlice";
+import { toggleTheme } from "../../store/themeSlice";
 import { RootState } from "../../store/store";
 import { BsSunFill } from "react-icons/bs";
 
