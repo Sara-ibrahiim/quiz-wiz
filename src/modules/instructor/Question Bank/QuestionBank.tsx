@@ -250,9 +250,7 @@ const PopupModal = ({
               </button>
             ) : (
               <button
-                onClick={() => {
-                  console.log("2y 2bn klb");
-                }}
+                onClick={() => {}}
                 className="text-gray-500 hover:text-gray-800 px-2 text-3xl font-bold "
               >
                 <IoCheckmark />

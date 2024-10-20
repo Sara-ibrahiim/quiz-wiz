@@ -35,7 +35,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar flex grid grid-cols-12 dark:bg-primaryDark text-primaryDark dark:text-lightText ps-1 border-b-[1px] border-[#ECECEC] pe-3">
-      <div className="flex-1 pt-5 xs:text-sm  md:col-span-7 sm:col-span-4 xs:col-span-3 text-primaryDark dark:text-lightText ms-3 font-bold mt-2 me-2">
+      <div className="pt-5 xs:text-sm  md:col-span-7 sm:col-span-4 xs:col-span-3 text-primaryDark dark:text-lightText ms-3 font-bold mt-2 me-2">
         Dashboard
       </div>
       <div className="md:col-span-3 sm:col-span-4 xs:col-span-4  md:ms-3  md:ml-auto">
@@ -52,7 +52,7 @@ const Navbar = () => {
         {/* User Avatar Button */}
 
         <div className="flex items-center border-l-[1px] md:py-[15px] sm:py-[22px] xs:py-[7px] sm:pt-2  ">
-          <div className="md:mx-6 xs:mx-2 sm:mx-4 font-bold">
+          <div className="lg:mx-6 md:mx-3 xs:mx-2 sm:mx-4 font-bold">
             <h3 className="xs:text-xs ms:text-sm">
               {profile?.first_name} {""}
               {profile?.last_name}

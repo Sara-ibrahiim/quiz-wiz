@@ -82,8 +82,10 @@ html.dark .firstRow-sideBar .ps-menu-button:hover {
 .sec-row .ps-menu-button {
   border-top: #ececec solid 1px !important;
 }
-.ps-menu-label .css-12w9als {
-}
+
 .css-16d95v9 > .ps-menu-button.active {
   border-left: 5px solid #009247 !important;
+}
+.special-border {
+  border-left: transparent !important;
 }

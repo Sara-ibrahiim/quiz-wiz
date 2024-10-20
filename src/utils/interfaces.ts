@@ -24,9 +24,9 @@ export interface ErrorPayload {
 }
 
 export interface GroupsState {
-  groups: Group[]
-  status: 'idle' | 'pending' | 'succeeded' | 'rejected'
-  message: null | string
+  groups: Group[];
+  status: "idle" | "pending" | "succeeded" | "rejected";
+  message: null | string;
 }
 
 export interface Group {
@@ -34,7 +34,7 @@ export interface Group {
   students: [];
   _id: string;
   message?: string;
-  max_students: number
+  max_students: number;
 }
 
 export interface Student {
@@ -44,9 +44,9 @@ export interface Student {
 }
 
 export interface StudentsState {
-  students: Student[]
-  status: 'idle' | 'pending' | 'succeeded' | 'rejected'
-  message: string | null
+  students: Student[];
+  status: "idle" | "pending" | "succeeded" | "rejected";
+  message: string | null;
 }
 export interface QuestionFrom {
   _id: string;
@@ -79,4 +79,23 @@ export interface CreateQuestionFrom {
   answer: string;
   difficulty: string;
   type: string;
+}
+
+export default interface Quiz {
+  _id: string;
+  code: string;
+  title: string;
+  description: string;
+  difficulty: string;
+  duration: number;
+  group: string;
+  instructor: string;
+  participants: number;
+  questions_number: number;
+  schadule: string;
+  score_per_question: number;
+  status: string;
+  type: string;
+  createdAt: string;
+  updatedAt: string;
 }
