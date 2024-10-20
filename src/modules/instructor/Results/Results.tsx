@@ -2,8 +2,10 @@ import { Groups_URls, Results_URls } from "@/constants/End-points";
 import { GroupFromResult, Result } from "@/utils/interfaces";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Results() {
+  const Navigate = useNavigate();
   const [allResults, setAllResults] = useState<Result[]>([]);
   const [groupList, setGroupList] = useState<GroupFromResult[]>([]);
 
@@ -14,7 +16,7 @@ export default function Results() {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
       });
-
+      console.log(res.data);
       setAllResults(res.data);
     } catch (error) {
       console.log(error);
@@ -41,7 +43,6 @@ export default function Results() {
 
   return (
     <>
-      {console.log(groupList)}
       <div>
         <div className="p-4">
           <div className="border-2 rounded-md p-5 ">
@@ -79,13 +80,27 @@ export default function Results() {
 
                   return (
                     <tr key={res.quiz._id}>
-                      <td>{res.quiz.title}</td>
-                      <td>{groupName}</td>
-                      <td>{group?.students.length || "0"}</td>
-                      <td>ِAny now</td>
-                      <td>{new Date(res.quiz.schadule).toLocaleString()}</td>
-                      <td>
-                        <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700">
+                      <td className="p-2 border-2">{res.quiz.title}</td>
+                      <td className="p-2 border-2">{groupName}</td>
+                      <td className="p-2 border-2">
+                        {group?.students.length || "0"}
+                      </td>
+                      <td className="p-2 border-2">
+                        {res.participants.length}
+                      </td>
+                      <td className="p-2 border-2">
+                        {new Date(res.quiz.schadule).toLocaleString()}
+                      </td>
+                      <td className="p-2 border-2">
+                        <button
+                          disabled={res.participants.length ? false : true}
+                          className="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700"
+                          onClick={() =>
+                            Navigate("/dashboard/ResultDetails", {
+                              state: { qus: res },
+                            })
+                          }
+                        >
                           View
                         </button>
                       </td>

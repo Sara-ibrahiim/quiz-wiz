@@ -2,7 +2,6 @@ export const Base_Url = "https://upskilling-egypt.com:3005/api";
 // export const Base_Img_Url ="https://upskilling-egypt.com:3005/"
 
 const Base_Auth = `${Base_Url}/auth`;
-
 export const Auth_URls = {
   login: `${Base_Auth}/login`,
   register: `${Base_Auth}/register`,
@@ -37,7 +36,6 @@ export const Students_URls = {
 };
 
 const Base_Quizes = `${Base_Url}/quiz`;
-
 export const QUIZES_URLS = {
   getAllQuizes: `${Base_Quizes}`, // GET
   createNewQuiz: `${Base_Quizes}`, // POST
@@ -47,11 +45,6 @@ export const QUIZES_URLS = {
   getQuizById: (id: string) => `${Base_Quizes}/${id}`, //GET
   updateQuizById: (id: string) => `${Base_Quizes}/${id}`, //PUT
   reasignQuizGroupById: (id: string) => `${Base_Quizes}/reassign/${id}`, //POST
-};
-
-const Base_Results = `${Base_Url}/quiz/result`;
-export const Results_URls = {
-  getAllResults: `${Base_Results}`,
 };
 
 const Base_Results = `${Base_Url}/quiz/result`;

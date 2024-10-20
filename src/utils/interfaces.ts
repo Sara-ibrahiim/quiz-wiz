@@ -113,3 +113,17 @@ export interface GroupFromResult {
   instructor: string;
   status: string;
 }
+
+export interface ResultDetailsForStudent {
+  finished_at: string;
+  participant: {
+    _id: string;
+    first_name: string;
+    last_name: string;
+    email: string;
+  };
+  quiz: { _id: string; title: string };
+  score: number;
+  started_at: string;
+  _id: string;
+}
