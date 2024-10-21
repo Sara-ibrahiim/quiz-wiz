@@ -36,7 +36,6 @@ export default function ResetPassword() {
     try {
       const { confirmPassword, ...apiData } = data;
       let response = await axios.post(Auth_URls.resetPassword, apiData);
-      console.log(response.data);
       navigate("/auth");
       toast.success(
         response.data.message || "Successfully create new password"

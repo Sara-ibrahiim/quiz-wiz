@@ -19,7 +19,9 @@ export const Question_URls = {
   update: (id: string) => `${Base_Ques}/${id}`,
 };
 
+
 const Base_Groups = `${Base_Url}/group`;
+
 export const Groups_URls = {
   getGroupsList: `${Base_Groups}`,
   addGroup: `${Base_Groups}`,
@@ -40,9 +42,10 @@ export const QUIZES_URLS = {
   getAllQuizes: `${Base_Quizes}`, // GET
   createNewQuiz: `${Base_Quizes}`, // POST
   getIncoming5Quizes: `${Base_Quizes}/incomming`, // GET
+  getCompleted: `${Base_Quizes}/result`,
   getLast5Quizes: `${Base_Quizes}/completed`, // GET
   deleteQuizByID: (id: string) => `${Base_Quizes}/${id}`, // DEL
-  getQuizById: (id: string) => `${Base_Quizes}/${id}`, //GET
+  getQuizById: (id: string | undefined) => `${Base_Quizes}/${id}`, //GET
   updateQuizById: (id: string) => `${Base_Quizes}/${id}`, //PUT
   reasignQuizGroupById: (id: string) => `${Base_Quizes}/reassign/${id}`, //POST
 };

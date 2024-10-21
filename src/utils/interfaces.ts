@@ -16,7 +16,7 @@ export interface RegisterFormData {
 }
 
 export interface RegisterFormProps {
-  setMode: (mode: "Login" | "Register") => void; // Specify the valid mode values
+  setMode: (mode: "Login" | "Register") => void; 
 }
 
 export interface ErrorPayload {
@@ -81,6 +81,7 @@ export interface CreateQuestionFrom {
   type: string;
 }
 
+
 export interface Result {
   participants: string[] | [];
   quiz: {
@@ -126,4 +127,22 @@ export interface ResultDetailsForStudent {
   score: number;
   started_at: string;
   _id: string;
+
+export default interface Quiz {
+  _id: string;
+  code: string;
+  title: string;
+  description: string;
+  difficulty: string;
+  duration: number;
+  group: string;
+  instructor: string;
+  participants: number;
+  questions_number: number;
+  schadule: string;
+  score_per_question: number;
+  status: string;
+  type: string;
+  createdAt: string;
+  updatedAt: string;
 }
