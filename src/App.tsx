@@ -10,6 +10,7 @@ import Homepage from "./modules/Dashboard/HomePage";
 import Quizzes from "./modules/instructor/Quizzes/Quizzes";
 import QuestionBank from "./modules/instructor/Question Bank/QuestionBank";
 import ListGroups from "./modules/instructor/ListGroups/ListGroups";
+import ViewQuiz from "./modules/instructor/Quizzes/ViewQuiz";
 
 function App() {
   const routes = createBrowserRouter([
@@ -59,11 +60,14 @@ function App() {
           element: <Quizzes />,
         },
         {
+          path: "quizzes/:quizId",
+          element: <ViewQuiz />,
+        },
+        {
           path: "question-bank",
           element: <QuestionBank />,
         },
-        { path: "list-groups", 
-          element: <ListGroups /> },
+        { path: "list-groups", element: <ListGroups /> },
       ],
     },
   ]);
