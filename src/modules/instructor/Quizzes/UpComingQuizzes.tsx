@@ -32,9 +32,8 @@ const UpComingQuizzes = () => {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     if (isNaN(date.getTime())) {
-      return "Invalid Date"; // Return a fallback string for invalid dates
+      return "Invalid Date";
     }
-    // Return formatted date and time
     return `${date.toLocaleDateString()} | ${date.toLocaleTimeString([], {
       hour: "2-digit",
       minute: "2-digit",
@@ -42,7 +41,7 @@ const UpComingQuizzes = () => {
   };
 
   return (
-    <div className="flex flex-col gap-5 p-3">
+    <div className="flex flex-col gap-5 p-3 ">
       <h1 className="text-lg font-bold">Upcoming Quizzes</h1>
       {incomingQuizzes.length > 0 ? (
         incomingQuizzes.map((quiz) => (
