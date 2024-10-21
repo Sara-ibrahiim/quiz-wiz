@@ -4,11 +4,12 @@ import { RiSafe2Line } from "react-icons/ri";
 import UpComingQuizzes from "./UpComingQuizzes";
 import NewQuiz from "./NewQuiz"; // Import the NewQuiz modal
 import { Link } from "react-router-dom";
+import { QUIZES_URLS } from "@/constants/End-points";
+import CompletedQuizzes from "./CompletedQuizzes";
 
 export default function Quizzes() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [refreshTrigger, setRefreshTrigger] = useState(false); // State to trigger refresh
-
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
 
@@ -40,9 +41,20 @@ export default function Quizzes() {
             <p className="font-bold text-xl">Question Bank</p>
           </Link>
         </div>
-        <div className="flex justify-between flex-col flex-1 gap-5 border-2 rounded-lg dark:border-lightText border-primaryDark">
-          <UpComingQuizzes refreshTrigger={refreshTrigger} />{" "}
-          {/* Pass refreshTrigger */}
+        <div className="flex justify-between flex-col flex-1 gap-5">
+          <div className=" border-2 rounded-lg dark:border-lightText border-primaryDark">
+            <div className="flex flex-col gap-5 p-2 max-h-[500px] overflow-auto">
+              <UpComingQuizzes
+                api={QUIZES_URLS.getAllQuizes}
+                refreshTrigger={refreshTrigger}
+              />{" "}
+            </div>
+          </div>
+          <div className="border-2 rounded-lg dark:border-lightText border-primaryDark">
+            <div className="p-2 max-h-[300px] overflow-auto">
+              <CompletedQuizzes />
+            </div>
+          </div>
         </div>
       </div>
       {isModalOpen && <NewQuiz onClose={handleQuizAdded} />}{" "}

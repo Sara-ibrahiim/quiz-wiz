@@ -5,32 +5,41 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { FaSpinner, FaRegCalendarAlt, FaClock } from "react-icons/fa";
 import { QUIZES_URLS } from "@/constants/End-points";
+import EditQuizModal from "./EditQuizModal";
 
 const ViewQuiz = () => {
   const { quizId } = useParams<{ quizId: string }>();
   const [quizDetails, setQuizDetails] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const accessToken = useSelector((state: RootState) => state.auth.accessToken); // Get access token from Redux
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const accessToken = useSelector((state: RootState) => state.auth.accessToken);
 
+  // Function to fetch quiz details
+  const fetchQuizDetails = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get(QUIZES_URLS.getQuizById(quizId), {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      setQuizDetails(response.data);
+    } catch (error) {
+      console.error("Error fetching quiz details:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Refresh the quiz details after edit
+  const refreshQuizzes = () => {
+    fetchQuizDetails(); // Call the function to refresh the quiz details
+  };
+
+  // Fetch quiz details on component mount
   useEffect(() => {
-    const fetchQuizDetails = async () => {
-      setLoading(true);
-      try {
-        const response = await axios.get(QUIZES_URLS.getQuizById(quizId), {
-          headers: {
-            Authorization: `Bearer ${accessToken}`, // Include the auth token
-          },
-        });
-        setQuizDetails(response.data);
-      } catch (error) {
-        console.error("Error fetching quiz details:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     if (quizId && accessToken) {
-      fetchQuizDetails(); // Fetch quiz details if we have a quiz ID and access token
+      fetchQuizDetails();
     }
   }, [quizId, accessToken]);
 
@@ -55,7 +64,7 @@ const ViewQuiz = () => {
   }
 
   return (
-    <div className="p-5 max-w-md ">
+    <div className="p-5 max-w-lg">
       {/* Breadcrumb Navigation */}
       <div className="text-sm mb-4 text-primaryDark dark:text-lightText">
         <Link to="/" className="text-primaryDark dark:text-lightText">
@@ -122,11 +131,24 @@ const ViewQuiz = () => {
 
         {/* Edit Button */}
         <div className="justify-end flex">
-          <button className="bg-primaryDark text-primaryLight dark:text-primaryDark dark:bg-primaryLight px-4 py-2 rounded-md w-1/2  mt-4 flex items-center justify-center gap-2">
+          <button
+            onClick={() => setIsEditModalOpen(true)}
+            className="bg-primaryDark text-primaryLight dark:text-primaryDark dark:bg-primaryLight px-4 py-2 rounded-md w-1/2  mt-4 flex items-center justify-center gap-2"
+          >
             <span>Edit</span>
           </button>
         </div>
       </div>
+
+      {/* Edit Modal */}
+      {isEditModalOpen && (
+        <EditQuizModal
+          quizId={quizDetails._id}
+          isOpen={isEditModalOpen}
+          onClose={() => setIsEditModalOpen(false)} // Close modal
+          refreshQuizzes={refreshQuizzes} // Refresh quiz details after edit
+        />
+      )}
     </div>
   );
 };

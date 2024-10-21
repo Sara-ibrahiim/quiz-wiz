@@ -4,29 +4,29 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import QuizImage from "@/assets/quiz-img.png";
-import { QUIZES_URLS } from "@/constants/End-points";
 import { FaSpinner } from "react-icons/fa";
 import Quiz from "@/utils/interfaces";
 
 interface UpComingQuizzesProps {
   refreshTrigger?: boolean;
+  api: string;
 }
 
-const UpComingQuizzes = ({ refreshTrigger }: UpComingQuizzesProps) => {
+const UpComingQuizzes = ({ refreshTrigger, api }: UpComingQuizzesProps) => {
   const [incomingQuizzes, setIncomingQuizzes] = useState<Quiz[]>([]);
   const [loading, setLoading] = useState(true);
-  const { getIncoming5Quizes } = QUIZES_URLS;
   const accessToken = useSelector((state: RootState) => state.auth.accessToken);
   const navigate = useNavigate();
 
   const fetchQuizzes = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(getIncoming5Quizes, {
+      const response = await axios.get(api, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       });
+
       setIncomingQuizzes(response.data);
     } catch (error) {
       console.error("Error Fetching quizzes", error);
@@ -39,7 +39,7 @@ const UpComingQuizzes = ({ refreshTrigger }: UpComingQuizzesProps) => {
     if (accessToken) {
       fetchQuizzes();
     }
-  }, [accessToken, getIncoming5Quizes, refreshTrigger]);
+  }, [accessToken, api, refreshTrigger]);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -58,7 +58,7 @@ const UpComingQuizzes = ({ refreshTrigger }: UpComingQuizzesProps) => {
   };
 
   return (
-    <div className="flex flex-col gap-5 p-3 max-h-96 overflow-auto ">
+    <>
       <h1 className="text-lg font-bold">Upcoming Quizzes</h1>
 
       {loading ? (
@@ -69,12 +69,12 @@ const UpComingQuizzes = ({ refreshTrigger }: UpComingQuizzesProps) => {
         incomingQuizzes.map((quiz) => (
           <div
             key={quiz._id}
-            className="border-2 dark:border-lightText border-primaryDark special-border rounded-xl flex gap-5"
+            className="border-2 dark:border-lightText border-primaryDark special-border rounded-xl flex gap-3"
           >
             <div>
-              <img src={QuizImage} alt="Quiz" className="w-36 h-36" />
+              <img src={QuizImage} alt="Quiz" className="w-32 h-32" />
             </div>
-            <div className="flex-col flex flex-1 gap-5 justify-center">
+            <div className="flex-col flex flex-1 gap-4 justify-center">
               <div>
                 <h2 className="text-2xl font-bold">{quiz.title}</h2>
                 <p>{formatDate(quiz.schadule)}</p>
@@ -95,7 +95,7 @@ const UpComingQuizzes = ({ refreshTrigger }: UpComingQuizzesProps) => {
       ) : (
         <p>No upcoming quizzes found.</p>
       )}
-    </div>
+    </>
   );
 };
 
