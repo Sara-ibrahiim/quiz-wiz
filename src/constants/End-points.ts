@@ -44,6 +44,7 @@ export const QUIZES_URLS = {
   getAllQuizes: `${Base_Quizes}`, // GET
   createNewQuiz: `${Base_Quizes}`, // POST
   getIncoming5Quizes: `${Base_Quizes}/incomming`, // GET
+  getCompleted: `${Base_Quizes}/result`,
   getLast5Quizes: `${Base_Quizes}/completed`, // GET
   deleteQuizByID: (id: string) => `${Base_Quizes}/${id}`, // DEL
   getQuizById: (id: string | undefined) => `${Base_Quizes}/${id}`, //GET
