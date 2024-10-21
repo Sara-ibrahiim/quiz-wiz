@@ -21,7 +21,7 @@ export const Question_URls = {
   update: (id: string) => `${Base_Ques}/${id}`,
 };
 
-const Base_Groups = `${Base_Url}/group`;
+export const Base_Groups = `${Base_Url}/group`;
 
 export const Groups_URls = {
   getGroupsList: `${Base_Groups}`,
