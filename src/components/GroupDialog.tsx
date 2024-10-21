@@ -135,7 +135,7 @@ export default function NewGroupDialog({
                     <button
                       type="button"
                       onClick={toggleDropdown}
-                      className="w-full p-2 text-right bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full p-2 text-right bg-white text-gray-400 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     >
                       <span className="flex items-center justify-between">
                         {value?.length > 0
@@ -145,16 +145,14 @@ export default function NewGroupDialog({
                       </span>
                     </button>
                     {isOpenOption && (
-                      <ul className="absolute z-10 w-full py-1 mt-1 overflow-auto bg-white border border-gray-300 rounded-md shadow-lg max-h-60">
+                      <ul className="absolute z-10 w-full py-1 mt-1 overflow-auto dark:bg-darkBackground bg-white border border-gray-300 rounded-md shadow-lg max-h-60">
                         {students.map((student, index) => (
                           <li
                             key={index}
                             onClick={() =>
                               handleOptionClick(student._id, onChange)
                             }
-                            className={`px-2 py-2 text-right cursor-pointer hover:bg-blue-100 flex items-center justify-between ${
-                              value.includes(student._id) ? "bg-blue-200" : ""
-                            }`}
+                            className={`px-2 py-2 text-right cursor-pointer hover:border flex items-center justify-between`}
                           >
                             {student.first_name} {student.last_name}
                             {value.includes(student._id) && (
