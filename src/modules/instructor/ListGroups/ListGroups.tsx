@@ -102,7 +102,6 @@ export default function GroupsList() {
                         <FaPenToSquare className="h-4 w-4" />
                         <span className="sr-only">{isUpdate? 'Edit' : 'add'}</span>
                       </Button>
-                      <NewGroupDialog IdUpdate={IdUpdate} isUpdate={isUpdate} isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} />
                     {/* Delete action */}
                     <button className="p-2 hover:bg-gray-200 rounded hover:text-red-400">
                       <AlertDialog>
@@ -148,6 +147,7 @@ export default function GroupsList() {
           </div>
         </div>
       )}
+      <NewGroupDialog IdUpdate={IdUpdate} isUpdate={isUpdate} isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} />
     </>
   );
 }

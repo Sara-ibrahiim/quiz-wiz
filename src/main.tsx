@@ -12,7 +12,6 @@ createRoot(document.getElementById("root")!).render(
   <Provider store={store}>
 
     <AuthInitializer/>
-    <StrictMode>
       <App />
       <ToastContainer
         position="top-right"
