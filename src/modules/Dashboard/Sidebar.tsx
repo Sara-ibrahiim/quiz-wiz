@@ -134,7 +134,7 @@ export default function SideBar() {
               icon={
                 <FaRegFileAlt className="bg-secondaryLight text-primaryDark p-1 rounded text-4xl" />
               }
-              component={<NavLink to="/dashboard/Results" />}
+              component={<NavLink to="/dashboard/results" />}
             >
               {" "}
               Results
