@@ -1,10 +1,9 @@
 import { useDispatch } from "react-redux";
-import { setAuth } from "../auth/authSlice"; 
+import { setAuth } from "../../store/authSlice";
 import { useEffect } from "react";
 
 export default function AuthInitializer() {
-
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getAuthDataFromLocalStorage = () => {
@@ -14,16 +13,18 @@ const dispatch = useDispatch();
 
       if (storedAccessToken && storedRefreshToken && storedProfile) {
         const parsedProfile = JSON.parse(storedProfile);
-        dispatch(setAuth({
-          accessToken: storedAccessToken,
-          refreshToken: storedRefreshToken,
-          profile: parsedProfile,
-        }));
+        dispatch(
+          setAuth({
+            accessToken: storedAccessToken,
+            refreshToken: storedRefreshToken,
+            profile: parsedProfile,
+          })
+        );
       }
     };
 
     getAuthDataFromLocalStorage();
   }, [dispatch]);
 
-  return null; 
+  return null;
 }

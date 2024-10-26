@@ -24,22 +24,24 @@ import PaginationItems from "@/components/Pagination";
 import LoadingPencil from "@/components/LoadingPencil/LoadingPencil";
 
 export default function GroupsList() {
-  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
-  const [isUpdate, setIsUpdate] = useState<boolean>(false)
-  const [IdUpdate, setIdUpdate] = useState<string>('')
+  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
+  const [isUpdate, setIsUpdate] = useState<boolean>(false);
+  const [IdUpdate, setIdUpdate] = useState<string>("");
   const dispatch = useDispatch<AppDispatch>();
-  const { groups, status, message } = useSelector((store: RootState) => store.groups);
+  const { groups, status, message } = useSelector(
+    (store: RootState) => store.groups
+  );
   const [currentPage, setCurrentPage] = useState(1); // Active page number
   const [groupsPerPage] = useState(10); // Number of items per page
 
-    // Get current groups for the current page
-    const indexOfLastGroup = currentPage * groupsPerPage;
-    const indexOfFirstGroup = indexOfLastGroup - groupsPerPage;
-    const currentGroups = groups.slice(indexOfFirstGroup, indexOfLastGroup);
-    // Change page
-    const paginate = (pageNumber: number) => {
-      setCurrentPage(pageNumber);
-    };
+  // Get current groups for the current page
+  const indexOfLastGroup = currentPage * groupsPerPage;
+  const indexOfFirstGroup = indexOfLastGroup - groupsPerPage;
+  const currentGroups = groups.slice(indexOfFirstGroup, indexOfLastGroup);
+  // Change page
+  const paginate = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
 
   useEffect(() => {
     if (status === "idle") {
@@ -51,26 +53,26 @@ export default function GroupsList() {
     if (status == "rejected") {
       toast.error(message);
     }
-  
+
     if (status == "succeeded") {
       toast.success(message);
     }
-  }, [status, message])
+  }, [status, message]);
 
   const handleDelete = (id: string): void => {
     dispatch(deleteGroup(id));
   };
 
-  const handleIsUpdate = (id: string): void =>{
+  const handleIsUpdate = (id: string): void => {
     setIsUpdate(true);
-    setIsDialogOpen(true)
-    setIdUpdate(id)
-  }
+    setIsDialogOpen(true);
+    setIdUpdate(id);
+  };
 
-  const handleIsAdd = (): void =>{
+  const handleIsAdd = (): void => {
     setIsUpdate(false);
-    setIsDialogOpen(true)
-  }
+    setIsDialogOpen(true);
+  };
 
   return (
     <>
@@ -80,7 +82,10 @@ export default function GroupsList() {
         <div className="container mx-auto p-4">
           <div className="flex justify-between items-center mb-4">
             <h1 className="text-2xl font-bold">Groups list</h1>
-            <Button onClick={handleIsAdd} className="bg-black text-white px-4 py-2 rounded-md flex items-center gap-2">
+            <Button
+              onClick={handleIsAdd}
+              className="bg-black text-white px-4 py-2 rounded-md flex items-center gap-2"
+            >
               <IoAddCircle size={22} />
               Add Group
             </Button>
