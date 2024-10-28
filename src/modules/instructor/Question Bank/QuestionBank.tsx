@@ -21,7 +21,7 @@ export default function QuestionBank() {
 
   const deleteQuestion = async (id: string) => {
     try {
-      const res = await axios.delete(`${Question_URls.delete(id)}`, {
+      await axios.delete(`${Question_URls.delete(id)}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -110,6 +110,7 @@ export default function QuestionBank() {
                         onClick={() => {
                           setTile("Display question");
                           setModalOpen(true);
+                          setSelectedQuestion(qus);
                         }}
                         className="cursor-pointer"
                       />
@@ -203,7 +204,6 @@ const PopupModal = ({
             },
           }
         );
-
         toast.success("Question Updated successfully");
         onClose();
         // fireFunction();
@@ -249,14 +249,7 @@ const PopupModal = ({
                 <IoCheckmark />
               </button>
             ) : (
-              <button
-                onClick={() => {
-                  console.log("2y 2bn klb");
-                }}
-                className="text-gray-500 hover:text-gray-800 px-2 text-3xl font-bold "
-              >
-                <IoCheckmark />
-              </button>
+              ""
             )}
 
             <button
@@ -284,7 +277,9 @@ const PopupModal = ({
                 className="w-80 mx-auto rounded-md"
               />
             </>
-          ) : title == "Set up a new question" || title == "Update question" ? (
+          ) : title == "Set up a new question" ||
+            title == "Update question" ||
+            title == "Display question" ? (
             <>
               <form className="p-4 ">
                 <p className="mb-4 text-lg font-semibold text-primaryDark dark:text-accent">
@@ -395,6 +390,7 @@ const PopupModal = ({
                       defaultValue={
                         selectedQuestion ? selectedQuestion.answer : ""
                       }
+                      disabled={title == "Display question" ? true : false}
                       {...register("answer", {
                         required: "This field is required",
                         validate: (value) => {
