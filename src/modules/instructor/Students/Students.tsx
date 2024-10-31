@@ -81,7 +81,7 @@ export default function Students() {
               </div>
 
               <div className=" flex pt-5 w-full">
-                <div className="w-11/12 flex ">
+                <div className="w-11/12 flex">
                   <h2 className="font-semibold">
                     {user.first_name} {""} {user.last_name}
                   </h2>
