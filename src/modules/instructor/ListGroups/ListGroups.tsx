@@ -103,21 +103,10 @@ export default function GroupsList() {
                   </div>
                   {/* Actions */}
                   <div className="flex gap-2">
-                    <Button
-                      onClick={() => handleIsUpdate(group._id)}
-                      className="p-2 hover:bg-gray-200 rounded hover:text-green-400"
-                    >
-                      <FaPenToSquare className="h-4 w-4" />
-                      <span className="sr-only">
-                        {isUpdate ? "Edit" : "add"}
-                      </span>
-                    </Button>
-                    <NewGroupDialog
-                      IdUpdate={IdUpdate}
-                      isUpdate={isUpdate}
-                      isOpen={isDialogOpen}
-                      onClose={() => setIsDialogOpen(false)}
-                    />
+                      <Button onClick={()=>handleIsUpdate(group._id)} className="p-2 hover:bg-gray-200 rounded hover:text-green-400">
+                        <FaPenToSquare className="h-4 w-4" />
+                        <span className="sr-only">{isUpdate? 'Edit' : 'add'}</span>
+                      </Button>
                     {/* Delete action */}
                     <button className="p-2 hover:bg-gray-200 rounded hover:text-red-400">
                       <AlertDialog>
@@ -163,6 +152,7 @@ export default function GroupsList() {
           </div>
         </div>
       )}
+      <NewGroupDialog IdUpdate={IdUpdate} isUpdate={isUpdate} isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} />
     </>
   );
 }

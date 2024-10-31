@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { QUIZES_URLS } from "@/constants/End-points";
 import { FaSpinner } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 interface CompletedQuiz {
   quiz: {
@@ -59,9 +60,11 @@ const CompletedQuizzes = () => {
     <div className="p-5 mx-auto">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-xl font-bold">Completed Quizzes</h1>
-        <div className="text-green-500 flex items-center">
-          Results <span className="ml-2 text-lg">➡️</span>
-        </div>
+        <Link to={"/dashboard/results"}>
+          <div className="text-green-500 flex items-center">
+            Results <span className="ml-2 text-lg">➡️</span>
+          </div>
+        </Link>
       </div>
 
       <table className="min-w-full border border-primaryDark dark:border-lightText rounded-md overflow-hidden">

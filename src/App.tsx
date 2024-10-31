@@ -15,7 +15,6 @@ import ResultDetails from "./modules/instructor/Results/ResultDetails";
 import ViewQuiz from "./modules/instructor/Quizzes/ViewQuiz";
 import Students from "./modules/instructor/Students/Students";
 
-
 function App() {
   const routes = createBrowserRouter([
     {
@@ -71,11 +70,11 @@ function App() {
           element: <QuestionBank />,
         },
         {
-          path: "Results",
+          path: "results",
           element: <Results />,
         },
         {
-          path: "ResultDetails",
+          path: "result-details",
           element: <ResultDetails />,
         },
         {
