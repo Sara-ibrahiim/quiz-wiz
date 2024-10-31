@@ -13,6 +13,7 @@ import ListGroups from "./modules/instructor/ListGroups/ListGroups";
 import Results from "./modules/instructor/Results/Results";
 import ResultDetails from "./modules/instructor/Results/ResultDetails";
 import ViewQuiz from "./modules/instructor/Quizzes/ViewQuiz";
+import Students from "./modules/instructor/Students/Students";
 
 function App() {
   const routes = createBrowserRouter([
@@ -75,6 +76,10 @@ function App() {
         {
           path: "result-details",
           element: <ResultDetails />,
+        },
+        {
+          path: "Students",
+          element: <Students />,
         },
 
         { path: "list-groups", element: <ListGroups /> },

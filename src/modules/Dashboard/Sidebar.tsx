@@ -122,7 +122,7 @@ export default function SideBar() {
               icon={
                 <PiStudent className="bg-secondaryLight text-primaryDark p-1 rounded text-4xl" />
               }
-              // component={<NavLink to="" />}
+              component={<NavLink to="/dashboard/Students" />}
             >
               {" "}
               Students
