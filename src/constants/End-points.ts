@@ -32,7 +32,7 @@ export const Groups_URls = {
 
 const Base_Students = `${Base_Url}/student`;
 export const Students_URls = {
-  getStudentsList: `${Base_Students}`,
+  getStudentsList: `${Base_Students}/without-group`,
   topStudents: `${Base_Students}/top-five`,
   studentsGetById: (id: string): string => `${Base_Students}/${id}`,
 };
