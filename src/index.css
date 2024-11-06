@@ -108,3 +108,11 @@ input[type="datetime-local"] {
     color: #000000;
   }
 } */
+
+.notFound{
+  background-image: url(../src/assets/404.png);
+  background-position: center;
+  background-size: contain;
+  height: 100vh;
+  background-repeat: no-repeat;
+}
