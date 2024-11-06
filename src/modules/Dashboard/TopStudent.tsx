@@ -3,6 +3,8 @@ import axios from "axios";
 import studentImg from "../../assets/student-back.jpg";
 import React, { useEffect, useState } from "react";
 import { FaArrowCircleRight, FaLongArrowAltRight } from "react-icons/fa";
+import { MdDriveFileRenameOutline, MdGroups3, MdOutlineMailOutline, MdOutlineNotificationsActive } from "react-icons/md";
+import { GrStatusUnknown } from "react-icons/gr";
 
 export default function TopStudent() {
   const [student, setStudent] = useState([]);
@@ -40,20 +42,36 @@ export default function TopStudent() {
   return (
     <>
       {isModalOpen && studentId && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50  ">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 border border-black  ">
           <div className="modal-box bg-primaryLight  text-left rounded p-10">
+            <div className="flex">
+            <MdDriveFileRenameOutline  style={{fontSize:"21px", marginRight:"5px" , color:"#ed6a6f"}}/>
             <h6 className="font-bold  text-primaryDark">
-              Name : {studentId.first_name} {""} {studentId.last_name}
+               Name : {studentId.first_name} {""} {studentId.last_name}
             </h6>
+            </div>
+           
+            <div className="flex">
+            <MdOutlineMailOutline style={{fontSize:"21px", marginRight:"5px" , color:"#ed6a6f"}} />
             <h6 className="font-bold  text-primaryDark">
-              Email : {studentId.email}
-            </h6>
+            Email : {studentId.email}
+            </h6> 
+            </div>
+            <div className="flex">
+            <MdOutlineNotificationsActive  style={{fontSize:"21px", marginRight:"5px" , color:"#ed6a6f"}}  />
+
             <h6 className="font-bold  text-primaryDark">
-              status : {studentId.status}
+              Status : {studentId.status}
             </h6>
+            </div>
+           
+            <div  className="flex">
+            <MdGroups3 style={{fontSize:"21px", marginRight:"5px" , color:"#ed6a6f"}}  />
             <h6 className="font-bold  text-primaryDark">
               Group : {studentId.group.name}
             </h6>
+            </div>
+            
             <div></div>
 
             <div className="modal-action flex justify-center gap-4">
