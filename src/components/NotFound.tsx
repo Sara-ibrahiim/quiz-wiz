@@ -2,7 +2,7 @@ import React from 'react'
 import NotImg from "../assets/../assets/404.jpg"
 import { Link, useNavigate } from 'react-router-dom'
 export default function NotFound() {
- const navigate = useNavigate
+
   return (
     <div>
       <div className='notFound'>

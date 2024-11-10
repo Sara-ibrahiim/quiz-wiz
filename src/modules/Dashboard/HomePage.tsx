@@ -1,5 +1,5 @@
 import TopStudent from "./TopStudent";
-import UpComingQuizzes from "../instructor/Quizzes/UpComingQuizzes";
+import UpComingQuizzes from "./UpComingQuizzes";
 import { QUIZES_URLS } from "@/constants/End-points";
 
 export default function HomePage() {

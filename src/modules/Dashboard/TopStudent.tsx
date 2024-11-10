@@ -5,6 +5,8 @@ import React, { useEffect, useState } from "react";
 import { FaArrowCircleRight, FaLongArrowAltRight } from "react-icons/fa";
 import { MdDriveFileRenameOutline, MdGroups3, MdOutlineMailOutline, MdOutlineNotificationsActive } from "react-icons/md";
 import { GrStatusUnknown } from "react-icons/gr";
+import { FaSpinner } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 export default function TopStudent() {
   const [student, setStudent] = useState([]);
@@ -91,15 +93,18 @@ export default function TopStudent() {
           <h3 className=" text-primaryDark dark:text-lightText font-medium text-xl">
             Top 5 Students{" "}
           </h3>
-          <div className="flex ml-auto cursor-pointer">
+          <Link to={"/dashboard/Students"}  className="flex ml-auto cursor-pointer">
             <h3 className=" text-primaryDark dark:text-lightText text-sm ml-auto mt-1 ">
               All Students
             </h3>
             <FaLongArrowAltRight className="text-[#C5D86D] text-xl ms-1  mt-1 " />
-          </div>
+          </Link>
         </div>
+<div>
+  
+</div>
 
-        {student.map((user: any) => (
+{student && student.length>0 ?(student.map((user: any) => (
           <div className="" key={user._id}>
             <div className="border-[1px] border-[#ECECEC] rounded pe-2 m-2 flex ">
               <div className="w-3/12 me-3">
@@ -127,7 +132,10 @@ export default function TopStudent() {
               </div>
             </div>
           </div>
-        ))}
+        ))):(<div className="flex justify-center items-center">
+          <FaSpinner className="animate-spin text-3xl text-primaryDark dark:text-lightText" />
+        </div>)}
+        
       </div>
     </>
   );
