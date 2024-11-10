@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BiSolidAlarmAdd } from "react-icons/bi";
 import { RiSafe2Line } from "react-icons/ri";
-import UpComingQuizzes from "./UpComingQuizzes";
+import UpComingQuizzes from "../../Dashboard/UpComingQuizzes";
 import NewQuiz from "./NewQuiz"; // Import the NewQuiz modal
 import { Link } from "react-router-dom";
 import { QUIZES_URLS } from "@/constants/End-points";
