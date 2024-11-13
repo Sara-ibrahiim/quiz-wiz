@@ -15,7 +15,12 @@ import ResultDetails from "./modules/instructor/Results/ResultDetails";
 import ViewQuiz from "./modules/instructor/Quizzes/ViewQuiz";
 import Students from "./modules/instructor/Students/Students";
 import StudentQuiz from "./modules/Students/StudentQuiz/StudentQuiz";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "./store/store";
+import NotFoundComponents from "./components/NotFoundComponents";
 function App() {
+  const dispatch = useDispatch();
+  const profile = useSelector((state: RootState) => state.auth.profile);
   const routes = createBrowserRouter([
     {
       path: "",
@@ -51,11 +56,11 @@ function App() {
       children: [
         {
           index: true,
-          element: <Homepage />,
+          element: profile?.role === "Instructor" ? <Homepage/> : <Quizzes />,
         },
         {
-          path: "",
-          element: <Homepage />,
+          path: "home-page",
+          element: profile?.role === "Instructor" ? <Homepage/> : <NotFoundComponents />,
         },
         {
           path: "quizzes",
@@ -63,11 +68,11 @@ function App() {
         },
         {
           path: "quizzes/:quizId",
-          element: <ViewQuiz />,
+          element: profile?.role === "Instructor" ? <ViewQuiz/> : <NotFoundComponents />,
         },
         {
           path: "question-bank",
-          element: <QuestionBank />,
+          element: profile?.role === "Instructor" ? <QuestionBank/> : <NotFoundComponents />,
         },
         {
           path: "results",
@@ -79,15 +84,17 @@ function App() {
         },
         {
           path: "students",
-          element: <Students/>,
+          element: profile?.role === "Instructor" ? <Students/> : <NotFoundComponents />,
         },
         {
           path: "student-quiz",
-          element: <StudentQuiz/>,
+          element: profile?.role === "Student" ? <StudentQuiz/> : <NotFoundComponents />,
         },
 
         { path: "list-groups",
-          element: <ListGroups /> },
+          element: profile?.role === "Instructor" ? <ListGroups/> : <NotFoundComponents />,
+        
+        },
       ],
     },
   ]);

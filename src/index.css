@@ -55,7 +55,7 @@ input:-webkit-autofill::first-line {
 }
 .ps-menu-button:hover {
   background-color: #fce0ca !important;
-  color: #0d1321 !important;
+  color: #282e3b !important;
 }
 html.dark .ps-menu-button:hover {
   background-color: #ffffff !important;

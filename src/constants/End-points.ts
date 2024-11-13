@@ -54,3 +54,8 @@ const Base_Results = `${Base_Url}/quiz/result`;
 export const Results_URls = {
   getAllResults: `${Base_Results}`,
 };
+
+const Base_StudentQuiz = `${Base_Url}/quiz`;
+export const StudentQuiz_Url = {
+  joinQuiz: `${Base_StudentQuiz}/join`,
+};

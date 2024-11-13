@@ -9,7 +9,12 @@ import { SlLogout } from "react-icons/sl";
 import { PiStudent } from "react-icons/pi";
 import { LucideFileSpreadsheet } from "lucide-react";
 import { FaRegFileAlt } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/store/store";
+import ModelJoinQuiz from "../Students/StudentQuiz/ModelJoinQuiz";
 export default function SideBar() {
+  const dispatch = useDispatch();
+  const profile = useSelector((state: RootState) => state.auth.profile);
   const [isCollapse, setIsCollapse] = React.useState(() => {
     const storedValue = localStorage.getItem("isCollapse");
     if (!storedValue) return false;
@@ -70,19 +75,18 @@ export default function SideBar() {
             >
               <div className="block xs:hidden"></div>{" "}
             </MenuItem>
-
-            <MenuItem
+{profile?.role ==="Instructor" &&  <MenuItem
               className="text-primaryDark dark:text-lightText sec-row "
               icon={
                 <RiHome6Line className="bg-secondaryLight text-primaryDark px-1 rounded text-4xl" />
               }
-              component={<NavLink to="/dashboard" />}
+              component={<NavLink to="/dashboard/home-page" />}
             >
               {" "}
               Dashboard
-            </MenuItem>
-            {/* { ? ( */}
-            <MenuItem
+            </MenuItem> }
+           
+        {profile?.role === "Instructor" &&         <MenuItem
               className="text-primaryDark dark:text-lightText "
               icon={
                 <GrGroup className="bg-secondaryLight text-primaryDark px-1 rounded text-4xl" />
@@ -91,13 +95,14 @@ export default function SideBar() {
             >
               {" "}
               Groups
-            </MenuItem>
-            {/* ) : (
-              ""
-            )} */}
+            </MenuItem>}
+    
+
 
             <MenuItem
-              className="text-primaryDark dark:text-lightText  "
+            
+            style={profile?.role === "Student"?{borderTop:"#ececec solid 1px"}:undefined}
+              className="text-primaryDark dark:text-lightText "
               icon={
                 <TfiTimer className="bg-secondaryLight text-primaryDark px-1 rounded text-4xl" />
               }
@@ -107,7 +112,7 @@ export default function SideBar() {
               Quizzes
             </MenuItem>
 
-            <MenuItem
+            {profile?.role === "Instructor" &&     <MenuItem
               className="text-primaryDark dark:text-lightText  "
               icon={
                 <TfiWrite className="bg-secondaryLight text-primaryDark p-1 rounded text-4xl" />
@@ -116,8 +121,9 @@ export default function SideBar() {
             >
               {" "}
               Questions
-            </MenuItem>
-            <MenuItem
+            </MenuItem>}
+
+            {profile?.role === "Instructor" &&     <MenuItem
               className="text-primaryDark dark:text-lightText  "
               icon={
                 <PiStudent className="bg-secondaryLight text-primaryDark p-1 rounded text-4xl" />
@@ -126,9 +132,9 @@ export default function SideBar() {
             >
               {" "}
               Students
-            </MenuItem>
-            {/* 
-            { ( */}
+            </MenuItem>}
+        
+          
             <MenuItem
               className="text-primaryDark dark:text-lightText  "
               icon={
