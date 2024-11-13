@@ -21,22 +21,10 @@ let getStudentById = async (id: string) => {
 };
   return (
     <div>
-         {isModalOpen && studentId && (
+         {isModalOpen &&  (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50  ">
           <div className="modal-box bg-primaryLight  text-left rounded p-10">
-            <h6 className="font-bold  text-primaryDark">
-              Name : {studentId.first_name} {""} {studentId.last_name}
-            </h6>
-            <h6 className="font-bold  text-primaryDark">
-              Email : {studentId.email}
-            </h6>
-            <h6 className="font-bold  text-primaryDark">
-              status : {studentId.status}
-            </h6>
-            <h6 className="font-bold  text-primaryDark">
-              Group : {studentId.group.name}
-            </h6>
-            <div></div>
+          
 
             <div className="modal-action flex justify-center gap-4">
               <button
