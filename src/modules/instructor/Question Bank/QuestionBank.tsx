@@ -6,7 +6,7 @@ import { IoIosClose } from "react-icons/io";
 import { QuestionFrom, CreateQuestionFrom } from "../../../utils/interfaces";
 import { Question_URls } from "../../../constants/End-points";
 import { IoCheckmark } from "react-icons/io5";
-import deleteImage from "../../../assets/pexels-cup-of-couple-6632867.jpg";
+import deleteImage from "../../../assets/no-data.png";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 

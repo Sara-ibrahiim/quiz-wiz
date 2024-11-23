@@ -26,7 +26,7 @@ export default function ModelJoinQuiz() {
         },
       });
 
-      console.log(response.data.message);
+      console.log(response.data);
     } catch (error) {
 
     }

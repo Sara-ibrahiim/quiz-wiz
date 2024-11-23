@@ -127,7 +127,7 @@ export interface ResultDetailsForStudent {
   score: number;
   started_at: string;
   _id: string;
-
+}
 export default interface Quiz {
   _id: string;
   code: string;

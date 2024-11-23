@@ -96,7 +96,7 @@ export default function Results() {
                           disabled={res.participants.length ? false : true}
                           className="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700"
                           onClick={() =>
-                            Navigate("/dashboard/ResultDetails", {
+                            Navigate("/dashboard/result-details", {
                               state: { qus: res },
                             })
                           }
