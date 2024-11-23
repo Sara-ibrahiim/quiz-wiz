@@ -18,6 +18,7 @@ import StudentQuiz from "./modules/Students/StudentQuiz/StudentQuiz";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./store/store";
 import NotFoundComponents from "./components/NotFoundComponents";
+import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
   const dispatch = useDispatch();
   const profile = useSelector((state: RootState) => state.auth.profile);
@@ -51,16 +52,27 @@ function App() {
     },
     {
       path: "dashboard",
-      element: <MasterLayout />,
+
+      element: (
+        <ProtectedRoute>
+          <MasterLayout />
+        </ProtectedRoute>
+      ),
+
       errorElement: <NotFound />,
       children: [
         {
           index: true,
-          element: profile?.role === "Instructor" ? <Homepage/> : <Quizzes />,
+          element: profile?.role === "Instructor" ? <Homepage /> : <Quizzes />,
         },
         {
           path: "home-page",
-          element: profile?.role === "Instructor" ? <Homepage/> : <NotFoundComponents />,
+          element:
+            profile?.role === "Instructor" ? (
+              <Homepage />
+            ) : (
+              <NotFoundComponents />
+            ),
         },
         {
           path: "quizzes",
@@ -68,11 +80,21 @@ function App() {
         },
         {
           path: "quizzes/:quizId",
-          element: profile?.role === "Instructor" ? <ViewQuiz/> : <NotFoundComponents />,
+          element:
+            profile?.role === "Instructor" ? (
+              <ViewQuiz />
+            ) : (
+              <NotFoundComponents />
+            ),
         },
         {
           path: "question-bank",
-          element: profile?.role === "Instructor" ? <QuestionBank/> : <NotFoundComponents />,
+          element:
+            profile?.role === "Instructor" ? (
+              <QuestionBank />
+            ) : (
+              <NotFoundComponents />
+            ),
         },
         {
           path: "results",
@@ -80,20 +102,35 @@ function App() {
         },
         {
           path: "result-details",
-          element: <ResultDetails/>,
+          element: <ResultDetails />,
         },
         {
           path: "students",
-          element: profile?.role === "Instructor" ? <Students/> : <NotFoundComponents />,
+          element:
+            profile?.role === "Instructor" ? (
+              <Students />
+            ) : (
+              <NotFoundComponents />
+            ),
         },
         {
           path: "student-quiz",
-          element: profile?.role === "Student" ? <StudentQuiz/> : <NotFoundComponents />,
+          element:
+            profile?.role === "Student" ? (
+              <StudentQuiz />
+            ) : (
+              <NotFoundComponents />
+            ),
         },
 
-        { path: "list-groups",
-          element: profile?.role === "Instructor" ? <ListGroups/> : <NotFoundComponents />,
-        
+        {
+          path: "list-groups",
+          element:
+            profile?.role === "Instructor" ? (
+              <ListGroups />
+            ) : (
+              <NotFoundComponents />
+            ),
         },
       ],
     },
