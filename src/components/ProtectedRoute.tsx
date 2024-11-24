@@ -11,5 +11,5 @@ export default function ProtectedRoute({children}:ProtectedRouteProps) {
     const profile = useSelector((state: RootState) => state.auth.profile?.role);
 
   if(localStorage.getItem("accessToken") || profile ) return children 
-  else return<Navigate to="/"/>
+  else return<Navigate to="/auth"/>
 }

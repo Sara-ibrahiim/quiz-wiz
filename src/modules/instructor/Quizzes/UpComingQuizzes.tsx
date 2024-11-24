@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // For navigation
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import QuizImage from "@/assets/quiz-img.png";
 import { FaSpinner } from "react-icons/fa";
@@ -59,6 +59,10 @@ const UpComingQuizzes = ({ refreshTrigger, api }: UpComingQuizzesProps) => {
 
   return (
     <>
+  
+    <div
+  
+    >
       <h1 className="text-lg font-bold">Upcoming Quizzes</h1>
 
       {loading ? (
@@ -95,6 +99,7 @@ const UpComingQuizzes = ({ refreshTrigger, api }: UpComingQuizzesProps) => {
       ) : (
         <p>No upcoming quizzes found.</p>
       )}
+      </div>
     </>
   );
 };

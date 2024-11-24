@@ -51,14 +51,14 @@ export default function SideBar() {
         <Sidebar collapsed={isCollapse} className="h-full">
           <Menu
             className="h-full "
-            // menuItemStyles={{
-            //   button: {
-            //     [`&.active`]: {
-            //      // backgroundColor: "",
-            //     // color: "#a4b5c5",
-            //     },
-            //   },
-            // }}
+            menuItemStyles={{
+              button: {
+                [`&.active`]: {
+                  backgroundColor: "#fce0ca",
+                  color: "#70808f",
+                },
+              },
+            }}
           >
             <MenuItem
               className="text-primaryDark dark:text-lightText  firstRow-sideBar py-3 text  "
@@ -75,36 +75,37 @@ export default function SideBar() {
             >
               <div className="block xs:hidden"></div>{" "}
             </MenuItem>
-{profile?.role ==="Instructor" &&  <MenuItem
-              className="text-primaryDark dark:text-lightText sec-row "
-              icon={
-                <RiHome6Line className="bg-secondaryLight text-primaryDark px-1 rounded text-4xl" />
-              }
-              component={<NavLink to="/dashboard/home-page" />}
-            >
-              {" "}
-              Dashboard
-            </MenuItem> }
-           
-        {profile?.role === "Instructor" &&         <MenuItem
-              className="text-primaryDark dark:text-lightText "
-              icon={
-                <GrGroup className="bg-secondaryLight text-primaryDark px-1 rounded text-4xl" />
-              }
-              component={<NavLink to="/dashboard/list-groups" />}
-            >
-              {" "}
-              Groups
-            </MenuItem>}
-    
+            {profile?.role === "Instructor" && (
+              <MenuItem
+                className="text-primaryDark dark:text-lightText  border-t border[#ececec-solid-1px]"
+                icon={
+                  <RiHome6Line className="bg-secondaryLight text-primaryDark px-1 rounded text-4xl" />
+                }
+                component={<NavLink to="/dashboard/home-page" />}
+              >
+                {" "}
+                Dashboard
+              </MenuItem>
+            )}
 
+            {profile?.role === "Instructor" && (
+              <MenuItem
+                className="text-primaryDark dark:text-lightText border-t border[#ececec-solid-1px] "
+                icon={
+                  <GrGroup className="bg-secondaryLight text-primaryDark px-1 rounded text-4xl" />
+                }
+                component={<NavLink to="/dashboard/list-groups" />}
+              >
+                {" "}
+                Groups
+              </MenuItem>
+            )}
 
             <MenuItem
-            
-            style={profile?.role === "Student"?{borderTop:"#ececec solid 1px"}:undefined}
-              className="text-primaryDark dark:text-lightText "
+              // style={profile?.role === "Student"?{borderTop:"#ececec solid 1px"}:undefined}
+              className="text-primaryDark dark:text-lightText border-t border[#ececec-solid-1px]"
               icon={
-                <TfiTimer className="bg-secondaryLight text-primaryDark px-1 rounded text-4xl" />
+                <TfiTimer className="bg-secondaryLight text-primaryDark px-1 rounded text-4xl   " />
               }
               component={<NavLink to="/dashboard/quizzes" />}
             >
@@ -112,35 +113,38 @@ export default function SideBar() {
               Quizzes
             </MenuItem>
 
-            {profile?.role === "Instructor" &&     <MenuItem
-              className="text-primaryDark dark:text-lightText  "
-              icon={
-                <TfiWrite className="bg-secondaryLight text-primaryDark p-1 rounded text-4xl" />
-              }
-              component={<NavLink to="/dashboard/question-bank" />}
-            >
-              {" "}
-              Questions
-            </MenuItem>}
+            {profile?.role === "Instructor" && (
+              <MenuItem
+                className="text-primaryDark dark:text-lightText   border-t border[#ececec-solid-1px] "
+                icon={
+                  <TfiWrite className="bg-secondaryLight text-primaryDark p-1 rounded text-4xl" />
+                }
+                component={<NavLink to="/dashboard/question-bank" />}
+              >
+                {" "}
+                Questions
+              </MenuItem>
+            )}
 
-            {profile?.role === "Instructor" &&     <MenuItem
-              className="text-primaryDark dark:text-lightText  "
-              icon={
-                <PiStudent className="bg-secondaryLight text-primaryDark p-1 rounded text-4xl" />
-              }
-              component={<NavLink to="/dashboard/Students" />}
-            >
-              {" "}
-              Students
-            </MenuItem>}
-        
-          
+            {profile?.role === "Instructor" && (
+              <MenuItem
+                className="text-primaryDark dark:text-lightText  border-t border[#ececec-solid-1px]  "
+                icon={
+                  <PiStudent className="bg-secondaryLight text-primaryDark p-1 rounded text-4xl" />
+                }
+                component={<NavLink to="/dashboard/Students"/>}
+              >
+                {" "}
+                Students
+              </MenuItem>
+            )}
+
             <MenuItem
-              className="text-primaryDark dark:text-lightText  "
+              className="text-primaryDark dark:text-lightText  border-t border[#ececec-solid-1px]  "
               icon={
                 <FaRegFileAlt className="bg-secondaryLight text-primaryDark p-1 rounded text-4xl" />
               }
-              component={<NavLink to="/dashboard/results" />}
+              component={<NavLink to="/dashboard/results"/>}
             >
               {" "}
               Results
@@ -150,7 +154,7 @@ export default function SideBar() {
             )} */}
 
             <MenuItem
-              className="text-primaryDark dark:text-lightText   "
+              className="text-primaryDark dark:text-lightText   border-t border[#ececec-solid-1px]  "
               //   onClick={}
               icon={
                 <RiLockPasswordLine className="bg-secondaryLight text-primaryDark px-1 rounded text-4xl" />
@@ -162,7 +166,7 @@ export default function SideBar() {
             </MenuItem>
 
             <MenuItem
-              className="text-primaryDark dark:text-lightText  "
+              className="text-primaryDark dark:text-lightText border-b  border-t border[#ececec-solid-1px]   "
               icon={
                 <SlLogout className="bg-secondaryLight text-primaryDark px-1 rounded text-4xl" />
               }

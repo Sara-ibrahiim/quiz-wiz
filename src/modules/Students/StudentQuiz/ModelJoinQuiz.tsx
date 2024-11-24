@@ -20,16 +20,14 @@ export default function ModelJoinQuiz() {
   } = useForm();
   let onSubmit = async (data: any) => {
     try {
-      let response = await axios.post(StudentQuiz_Url.joinQuiz,data, {
+      let response = await axios.post(StudentQuiz_Url.joinQuiz, data, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
       });
 
       console.log(response.data);
-    } catch (error) {
-
-    }
+    } catch (error) {}
   };
   return (
     <div>
@@ -80,7 +78,7 @@ export default function ModelJoinQuiz() {
           </div>
         </div>
       )}
-      <div className="ms-12">
+      <div className="">
         <div
           className="flex flex-col ms-12 gap-5 border-2 cursor-pointer p-10 dark:border-lightText border-primaryDark rounded-lg justify-center items-center hover:dark:bg-slate-800 transition duration-300 hover:bg-slate-200"
           onClick={toggleModal}

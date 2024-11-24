@@ -56,6 +56,7 @@ input:-webkit-autofill::first-line {
 .ps-menu-button:hover {
   background-color: #fce0ca !important;
   color: #282e3b !important;
+  
 }
 html.dark .ps-menu-button:hover {
   background-color: #ffffff !important;
@@ -70,8 +71,8 @@ html.dark .firstRow-sideBar .ps-menu-button:hover {
   color: #0d1321 !important;
 }
 
-.css-1t8x7v1 > .ps-menu-button {
-  border-bottom: #ececec solid 1px !important;
+.ps-menu-button {
+  /* border-top: #ececec solid 1px !important; */
   padding-block: 30px !important;
 }
 .firstRow-sideBar .ps-menu-button {
@@ -79,9 +80,9 @@ html.dark .firstRow-sideBar .ps-menu-button:hover {
   margin-left: 5px !important;
   padding-block: 0px !important;
 }
-.sec-row .ps-menu-button {
+/* .sec-row .ps-menu-button {
   border-top: #ececec solid 1px !important;
-}
+} */
 
 .css-16d95v9 > .ps-menu-button.active {
   border-left: 5px solid #009247 !important;
@@ -109,7 +110,7 @@ input[type="datetime-local"] {
   }
 } */
 
-.notFound{
+.notFound {
   background-image: url(../src/assets/404.png);
   background-position: center;
   background-size: contain;
