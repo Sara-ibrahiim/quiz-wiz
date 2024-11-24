@@ -44,9 +44,15 @@ const Navbar = () => {
           className="flex md:mt-5 xs:mt-6 md:px-0 border-[1px] cursor-pointer md:ml-auto rounded-full md:pe-2 sm:mt-6 md:me-5 xs:w-11/12 sm:w-8/12 md:w-[200px] hover:bg-slate-300 transition duration-300 hover:dark:bg-slate-800"
         >
           <BiSolidAlarmAdd className=" md:ms-10 md:text-4xl xs:text-2xl  sm:text-3xl sm:ms-4" />
-          <p className="mt-1 ms-2 font-bold md:text-lg xs:text-sm sm:text-base">
-            New Quiz
-          </p>
+          {profile?.role === "Instructor" ? (
+            <p className="mt-1 ms-2 font-bold md:text-lg xs:text-sm sm:text-base">
+              New Quiz
+            </p>
+          ) : (
+            <p className="mt-1 ms-2 font-bold md:text-lg xs:text-sm sm:text-base">
+              Join Quiz
+            </p>
+          )}
         </Link>
       </div>
       <div className="md:relative md:col-span-2 sm:col-span-4 xs:col-span-3 xs:pt-3">

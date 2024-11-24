@@ -1,3 +1,4 @@
+import NoData from "@/components/NoData";
 import { Groups_URls, Results_URls } from "@/constants/End-points";
 import { GroupFromResult, Result } from "@/utils/interfaces";
 import axios from "axios";
@@ -73,41 +74,51 @@ export default function Results() {
                   </th>
                 </tr>
               </thead>
-              <tbody>
-                {allResults.map((res) => {
-                  const group = groupList.find((g) => g._id === res.quiz.group);
-                  const groupName = group ? group.name : "Group Not Found";
+              {allResults.length > 0 ? (
+                <tbody>
+                  {allResults.map((res: any) => {
+                    const group = groupList.find(
+                      (g) => g._id === res.quiz.group
+                    );
+                    const groupName = group ? group.name : "Group Not Found";
 
-                  return (
-                    <tr key={res.quiz._id}>
-                      <td className="p-2 border-2">{res.quiz.title}</td>
-                      <td className="p-2 border-2">{groupName}</td>
-                      <td className="p-2 border-2">
-                        {group?.students.length || "0"}
-                      </td>
-                      <td className="p-2 border-2">
-                        {res.participants.length}
-                      </td>
-                      <td className="p-2 border-2">
-                        {new Date(res.quiz.schadule).toLocaleString()}
-                      </td>
-                      <td className="p-2 border-2">
-                        <button
-                          disabled={res.participants.length ? false : true}
-                          className="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700"
-                          onClick={() =>
-                            Navigate("/dashboard/result-details", {
-                              state: { qus: res },
-                            })
-                          }
-                        >
-                          View
-                        </button>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
+                    return (
+                      <tr key={res.quiz._id}>
+                        <td className="p-2 border-2">{res.quiz.title}</td>
+                        <td className="p-2 border-2">{groupName}</td>
+                        <td className="p-2 border-2">
+                          {group?.students?.length || "0"}
+                        </td>
+                        <td className="p-2 border-2">
+                          {res.participants?.length}
+                        </td>
+                        <td className="p-2 border-2">
+                          {new Date(res.quiz?.schadule).toLocaleString()}
+                        </td>
+                        <td className="p-2 border-2">
+                          <button
+                            disabled={res.participants?.length ? false : true}
+                            className="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700"
+                            onClick={() =>
+                              Navigate("/dashboard/result-details", {
+                                state: { qus: res },
+                              })
+                            }
+                          >
+                            View
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              ) : (
+                <tbody>
+                  <td colSpan={6}>
+                    <NoData />
+                  </td>
+                </tbody>
+              )}
             </table>
           </div>
         </div>

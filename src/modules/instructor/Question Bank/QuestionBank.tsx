@@ -9,6 +9,7 @@ import { IoCheckmark } from "react-icons/io5";
 import deleteImage from "../../../assets/no-data.png";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
+import NoData from "@/components/NoData";
 
 export default function QuestionBank() {
   const [fireedFunction, setFireedFunction] = useState<any>(null);
@@ -97,45 +98,55 @@ export default function QuestionBank() {
                 </th>
               </tr>
             </thead>
+            {allQuestions && allQuestions.length > 0 ? 
+            
             <tbody>
-              {allQuestions?.map((qus) => {
-                return (
-                  <tr key={qus._id} className="">
-                    <td className="p-2 border-2">{qus.title}</td>
-                    <td className="p-2 border-2">{qus.description}</td>
-                    <td className="p-2 border-2">{qus.difficulty}</td>
-                    <td className="p-2 border-2">Date</td>
-                    <td className="p-3 border-2 flex justify-evenly">
-                      <FaEye
-                        onClick={() => {
-                          setTile("Display question");
-                          setModalOpen(true);
-                          setSelectedQuestion(qus);
-                        }}
-                        className="cursor-pointer"
-                      />
-                      <FaEdit
-                        onClick={() => {
-                          setTile("Update question");
-                          setModalOpen(true);
-                          setSelectedQuestion(qus);
-                        }}
-                        className="cursor-pointer"
-                      />
-                      <MdDelete
-                        onClick={() => {
-                          setModalOpen(true);
-                          setTile("Delete Question");
-                          setFireedFunction(() => deleteQuestion);
-                          setSelectedQuestion(qus);
-                        }}
-                        className="cursor-pointer"
-                      />
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
+            {allQuestions?.map((qus) => {
+              return (
+                <tr key={qus._id} className="">
+                  <td className="p-2 border-2">{qus.title}</td>
+                  <td className="p-2 border-2">{qus.description}</td>
+                  <td className="p-2 border-2">{qus.difficulty}</td>
+                  <td className="p-2 border-2">Date</td>
+                  <td className="p-3 border-2 flex justify-evenly">
+                    <FaEye
+                      onClick={() => {
+                        setTile("Display question");
+                        setModalOpen(true);
+                        setSelectedQuestion(qus);
+                      }}
+                      className="cursor-pointer"
+                    />
+                    <FaEdit
+                      onClick={() => {
+                        setTile("Update question");
+                        setModalOpen(true);
+                        setSelectedQuestion(qus);
+                      }}
+                      className="cursor-pointer"
+                    />
+                    <MdDelete
+                      onClick={() => {
+                        setModalOpen(true);
+                        setTile("Delete Question");
+                        setFireedFunction(() => deleteQuestion);
+                        setSelectedQuestion(qus);
+                      }}
+                      className="cursor-pointer"
+                    />
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+            : <tbody>
+                  <td colSpan={6} >
+                  
+                      <NoData />
+                 
+                  </td>
+                </tbody>}
+       
           </table>
 
           <PopupModal
