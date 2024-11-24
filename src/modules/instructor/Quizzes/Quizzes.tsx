@@ -80,25 +80,16 @@ export default function Quizzes() {
                 }
           }
         >
-          <div
-            className=" border-2 rounded-lg dark:border-lightText border-primaryDark"
-            style={
-              profile?.role === "Student"
-                ? { display: "none" }
-                : { display: "inline" }
-            }
-          >
-            {profile?.role === "Instructor" ? (
+          {profile?.role === "Instructor" && (
+            <div className=" border-2 rounded-lg dark:border-lightText border-primaryDark">
               <div className="flex flex-col gap-5 p-2 max-h-[500px] overflow-auto">
                 <UpComingQuizzes
                   api={QUIZES_URLS.getAllQuizes}
                   refreshTrigger={refreshTrigger}
                 />{" "}
               </div>
-            ) : (
-              ""
-            )}
-          </div>
+            </div>
+          ) }
 
           <div className="border-2 rounded-lg dark:border-lightText border-primaryDark">
             <div className="p-2 max-h-[300px] overflow-auto">
