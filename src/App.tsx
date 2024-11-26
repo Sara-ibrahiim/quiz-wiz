@@ -14,11 +14,11 @@ import Results from "./modules/instructor/Results/Results";
 import ResultDetails from "./modules/instructor/Results/ResultDetails";
 import ViewQuiz from "./modules/instructor/Quizzes/ViewQuiz";
 import Students from "./modules/instructor/Students/Students";
-import StudentQuiz from "./modules/Students/StudentQuiz/StudentQuiz";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./store/store";
 import NotFoundComponents from "./components/NotFoundComponents";
 import ProtectedRoute from "./components/ProtectedRoute";
+import StudentesQuestions from "./modules/Students/StudentesQuestions/StudentesQuestions";
 function App() {
   const dispatch = useDispatch();
   const profile = useSelector((state: RootState) => state.auth.profile);
@@ -117,7 +117,7 @@ function App() {
           path: "student-quiz",
           element:
             profile?.role === "Student" ? (
-              <StudentQuiz />
+              <StudentesQuestions />
             ) : (
               <NotFoundComponents />
             ),
