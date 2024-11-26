@@ -117,3 +117,26 @@ input[type="datetime-local"] {
   height: 100vh;
   background-repeat: no-repeat;
 }
+
+.react-form-wizard {
+  .wizard-icon-container {
+    background-color: #4ADE80 !important;
+  }
+
+  .smooth-border-left-to-right {
+    border-color: #e5e7eb !important;
+  }
+
+  .active .wizard-icon-container {
+    background-color: #22d564 !important;
+  }
+
+  .wizard-btn {
+    background-color: #22d564 !important;
+   
+  }
+
+  .wizard-icon {
+    color: #fff
+  }
+}
