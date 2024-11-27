@@ -56,7 +56,6 @@ input:-webkit-autofill::first-line {
 .ps-menu-button:hover {
   background-color: #fce0ca !important;
   color: #282e3b !important;
-  
 }
 html.dark .ps-menu-button:hover {
   background-color: #ffffff !important;
@@ -120,7 +119,7 @@ input[type="datetime-local"] {
 
 .react-form-wizard {
   .wizard-icon-container {
-    background-color: #4ADE80 !important;
+    background-color: #c5d86d !important;
   }
 
   .smooth-border-left-to-right {
@@ -128,15 +127,21 @@ input[type="datetime-local"] {
   }
 
   .active .wizard-icon-container {
-    background-color: #22d564 !important;
+    background-color: #fcdabf !important;
   }
 
   .wizard-btn {
-    background-color: #22d564 !important;
-   
+    background-color: #c5d86d !important;
+    color: #0d1321 !important;
   }
 
   .wizard-icon {
-    color: #fff
+    color: #0d1321 !important;
   }
+}
+html.dark .wizard-btn {
+  color: #fff !important;
+}
+html.dark .wizard-icon {
+  color: #fff !important;
 }
