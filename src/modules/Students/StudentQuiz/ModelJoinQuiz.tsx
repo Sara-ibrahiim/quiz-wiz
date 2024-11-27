@@ -1,12 +1,8 @@
 import React, { useState } from "react";
 import { BiSolidAlarmAdd } from "react-icons/bi";
-
-import { RiSafe2Line } from "react-icons/ri";
-import { Link } from "react-router-dom";
 import { ImCheckmark, ImCross } from "react-icons/im";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import StudentQuiz from "./StudentQuiz";
 import { StudentQuiz_Url } from "@/constants/End-points";
 export default function ModelJoinQuiz() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,7 +29,7 @@ export default function ModelJoinQuiz() {
     <div>
       {isModalOpen && (
         <div className="fixed inset-0  z-50 flex items-center justify-center bg-black bg-opacity-50  ">
-          <div className=" bg-white  text-left rounded px-12 pt-12">
+          <div className=" bg-lightText text-left rounded px-12 pt-12 dark:bg-primaryDark">
             <form onSubmit={handleSubmit(onSubmit)} method="post">
               <div className="flex flex-col px-3 pt-3  text-center">
                 <h3 className="text-3xl mb-9 font-bold">Join Quiz</h3>
@@ -45,7 +41,7 @@ export default function ModelJoinQuiz() {
 
                 <div className="">
                   <div className="flex items-center border rounded-lg overflow-hidden mb-11">
-                    <span className="bg-[#FFEDDF] text-black font-bold px-4 py-2">
+                    <span className="bg-[#FFEDDF] b text-black font-bold px-4 py-2">
                       Code
                     </span>
 
@@ -63,15 +59,15 @@ export default function ModelJoinQuiz() {
 
               <div className=" flex justify-center  ">
                 <button className="btn  border rounded-tl mt-2" type="submit">
-                  <ImCheckmark className="text-[1.5rem] m-5" />
+                  <ImCheckmark className="text-[1.5rem] m-5  hover:text-[#c5d86d]" />
                 </button>
 
                 <button
-                  className="  mt-2 rounded-tr border "
+                  className="  mt-2 rounded-tr border"
                   onClick={toggleModal}
                   type="button"
                 >
-                  <ImCross className="text-[1.1rem] my-5 mx-6" />
+                  <ImCross className="text-[1.1rem] my-5 mx-6 hover:text-[#c5d86d]" />
                 </button>
               </div>
             </form>

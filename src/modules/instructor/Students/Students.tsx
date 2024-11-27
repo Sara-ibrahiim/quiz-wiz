@@ -1,12 +1,14 @@
 import { Students_URls } from "@/constants/End-points";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { FaArrowCircleRight } from "react-icons/fa";
 import studentImg from "../../../assets/stu.jpg";
-import { BiSolidMessageSquareDetail } from "react-icons/bi";
 import NoData from "../../../assets/no-data.png";
 import { FaRegEye } from "react-icons/fa6";
-import { MdDriveFileRenameOutline, MdOutlineMailOutline, MdOutlineNotificationsActive } from "react-icons/md";
+import {
+  MdDriveFileRenameOutline,
+  MdOutlineMailOutline,
+  MdOutlineNotificationsActive,
+} from "react-icons/md";
 export default function Students() {
   const [student, setStudent] = useState([]);
   const [studentId, setStudentId] = useState<any>();
@@ -46,25 +48,43 @@ export default function Students() {
       {isModalOpen && studentId && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-black bg-opacity-40 ">
           <div className="modal-box bg-primaryLight  text-left rounded p-10">
-          <div className="flex">
-            <MdDriveFileRenameOutline  style={{fontSize:"21px", marginRight:"5px" , color:"#ed6a6f"}}/>
-            <h6 className="font-bold  text-primaryDark">
-               Name : {studentId.first_name} {""} {studentId.last_name}
-            </h6>
-            </div>
-           
             <div className="flex">
-            <MdOutlineMailOutline style={{fontSize:"21px", marginRight:"5px" , color:"#ed6a6f"}} />
-            <h6 className="font-bold  text-primaryDark">
-            Email : {studentId.email}
-            </h6> 
+              <MdDriveFileRenameOutline
+                style={{
+                  fontSize: "21px",
+                  marginRight: "5px",
+                  color: "#ed6a6f",
+                }}
+              />
+              <h6 className="font-bold  text-primaryDark">
+                Name : {studentId.first_name} {""} {studentId.last_name}
+              </h6>
             </div>
-            <div className="flex">
-            <MdOutlineNotificationsActive  style={{fontSize:"21px", marginRight:"5px" , color:"#ed6a6f"}}  />
 
-            <h6 className="font-bold  text-primaryDark">
-              Status : {studentId.status}
-            </h6>
+            <div className="flex">
+              <MdOutlineMailOutline
+                style={{
+                  fontSize: "21px",
+                  marginRight: "5px",
+                  color: "#ed6a6f",
+                }}
+              />
+              <h6 className="font-bold  text-primaryDark">
+                Email : {studentId.email}
+              </h6>
+            </div>
+            <div className="flex">
+              <MdOutlineNotificationsActive
+                style={{
+                  fontSize: "21px",
+                  marginRight: "5px",
+                  color: "#ed6a6f",
+                }}
+              />
+
+              <h6 className="font-bold  text-primaryDark">
+                Status : {studentId.status}
+              </h6>
             </div>
 
             <div></div>
@@ -120,9 +140,7 @@ export default function Students() {
         </div>
       ) : (
         <div className="flex justify-center items-center min-h-screen p-2">
-        
           <div className="flex me-11 ">
-          
             <h2 className="mt-12">No students here ...</h2>
             <img src={NoData} className="max-w-72" />
           </div>

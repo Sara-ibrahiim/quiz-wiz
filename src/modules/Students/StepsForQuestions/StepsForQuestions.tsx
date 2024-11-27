@@ -24,7 +24,7 @@ export default function StepsForQuestions() {
         {arrayOfNum.map((num) => (
           <FormWizard.TabContent key={num}>
             <div className="flex items-center justify-between gap-5 mx-5">
-              <h3 className="w-full py-2 font-bold text-center text-white bg-red-500 rounded-md text-md xl:text-xl lg:text-lg ">
+              <h3 className="w-full py-2 font-bold text-center text-white:dark bg-red-500 rounded-md text-md xl:text-xl lg:text-lg ">
                 what is html
               </h3>
             </div>
