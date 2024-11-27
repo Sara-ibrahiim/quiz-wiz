@@ -41,13 +41,13 @@ export default function ModelJoinQuiz() {
 
                 <div className="">
                   <div className="flex items-center border rounded-lg overflow-hidden mb-11">
-                    <span className="bg-[#FFEDDF] b text-black font-bold px-4 py-2">
+                    <span className="bg-[#FFEDDF] b text-black  font-bold px-4 py-2">
                       Code
                     </span>
 
                     <input
                       type="text"
-                      className="flex-1 px-4 py-2 border-0 focus:outline-none"
+                      className="flex-1 px-4 py-2 border-0 focus:outline-none dark:bg-transparent"
                       placeholder="Enter code here"
                       {...register("code", {
                         required: "Code is required",
