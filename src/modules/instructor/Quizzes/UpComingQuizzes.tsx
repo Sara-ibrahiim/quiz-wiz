@@ -63,7 +63,7 @@ const UpComingQuizzes = ({ refreshTrigger, api }: UpComingQuizzesProps) => {
     <div
   
     >
-      <h1 className="text-lg font-bold">Upcoming Quizzes</h1>
+      <h1 className="text-lg font-bold py-2">Upcoming Quizzes</h1>
 
       {loading ? (
         <div className="flex justify-center items-center">
@@ -73,7 +73,7 @@ const UpComingQuizzes = ({ refreshTrigger, api }: UpComingQuizzesProps) => {
         incomingQuizzes.map((quiz) => (
           <div
             key={quiz._id}
-            className="border-2 dark:border-lightText border-primaryDark special-border rounded-xl flex gap-3"
+            className="border-2 mb-2 dark:border-lightText border-primaryDark special-border rounded-xl flex gap-3"
           >
             <div>
               <img src={QuizImage} alt="Quiz" className="w-32 h-32" />

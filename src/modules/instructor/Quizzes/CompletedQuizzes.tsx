@@ -50,7 +50,7 @@ const CompletedQuizzes = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center my-4">
         <FaSpinner className="animate-spin text-3xl text-primaryDark dark:text-lightText" />
       </div>
     );
@@ -99,6 +99,8 @@ const CompletedQuizzes = () => {
           ))}
         </tbody>
       </table>
+
+      
     </div>
   );
 };

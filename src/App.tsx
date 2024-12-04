@@ -102,7 +102,13 @@ function App() {
         },
         {
           path: "result-details",
-          element: <ResultDetails />,
+          element:
+          profile?.role === "Instructor" ? (
+            <ResultDetails />
+          ) : (
+            <NotFoundComponents />
+          ),
+        
         },
         {
           path: "students",
@@ -114,7 +120,7 @@ function App() {
             ),
         },
         {
-          path: "student-quiz/:quizId",
+          path: "student-quiz/:quizIdStudent",
           element:
             profile?.role === "Student" ? (
               <StudentsQuestions />
