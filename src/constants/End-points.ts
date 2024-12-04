@@ -46,6 +46,7 @@ export const QUIZES_URLS = {
   getLast5Quizes: `${Base_Quizes}/completed`, // GET
   deleteQuizByID: (id: string) => `${Base_Quizes}/${id}`, // DEL
   getQuizById: (id: string | undefined) => `${Base_Quizes}/${id}`, //GET
+  getQuizWithoutAnswer: (id: string | undefined) => `${Base_Quizes}/without-answers/${id}`, //GET
   updateQuizById: (id: string) => `${Base_Quizes}/${id}`, //PUT
   reasignQuizGroupById: (id: string) => `${Base_Quizes}/reassign/${id}`, //POST
 };
@@ -55,7 +56,9 @@ export const Results_URls = {
   getAllResults: `${Base_Results}`,
 };
 
+/*** student panel */
 const Base_StudentQuiz = `${Base_Url}/quiz`;
 export const StudentQuiz_Url = {
-  joinQuiz: `${Base_StudentQuiz}/join`,
+  joinQuiz:`${Base_StudentQuiz}/join`,
+  getQuizWithoutAnswer: (id: string | undefined) => `${Base_StudentQuiz}/without-answers/${id}`, //GET
 };

@@ -4,26 +4,35 @@ import { ImCheckmark, ImCross } from "react-icons/im";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { StudentQuiz_Url } from "@/constants/End-points";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 export default function ModelJoinQuiz() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  let navigate = useNavigate();
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
   let {
     register,
     handleSubmit,
-    formState: { errors },
+    reset,
+    formState:{ errors },
   } = useForm();
-  let onSubmit = async (data: any) => {
+  let onSubmit = async (data:any) => {
     try {
       let response = await axios.post(StudentQuiz_Url.joinQuiz, data, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          Authorization:`Bearer ${localStorage.getItem("accessToken")}`,
         },
       });
-
-      console.log(response.data);
-    } catch (error) {}
+      let quizIdStudent = response.data.data.quiz;
+      navigate(`/dashboard/student-quiz/${quizIdStudent}`);
+      toast.success("joined successfully");
+      reset();
+      //console.log(response.data.data.quiz);
+    } catch (error: any) {
+      toast.error(error.response.data.message || "Error");
+    }
   };
   return (
     <div>
@@ -40,7 +49,7 @@ export default function ModelJoinQuiz() {
                 </div>
 
                 <div className="">
-                  <div className="flex items-center border rounded-lg overflow-hidden mb-11">
+                  <div className="flex items-center border focus-within:border-[#c5d86d] focus-within:border-2 rounded-lg overflow-hidden mb-11">
                     <span className="bg-[#FFEDDF] b text-black  font-bold px-4 py-2">
                       Code
                     </span>
@@ -58,16 +67,19 @@ export default function ModelJoinQuiz() {
               </div>
 
               <div className=" flex justify-center  ">
-                <button className="btn  border rounded-tl mt-2" type="submit">
-                  <ImCheckmark className="text-[1.5rem] m-5  hover:text-[#c5d86d]" />
+                <button
+                  className="btn  border rounded-tl mt-2 hover:text-[#c5d86d]"
+                  type="submit"
+                >
+                  <ImCheckmark className="text-[1.5rem] m-5  " />
                 </button>
 
                 <button
-                  className="  mt-2 rounded-tr border"
+                  className="  mt-2 rounded-tr border hover:text-[#c5d86d]"
                   onClick={toggleModal}
                   type="button"
                 >
-                  <ImCross className="text-[1.1rem] my-5 mx-6 hover:text-[#c5d86d]" />
+                  <ImCross className="text-[1.1rem] my-5 mx-6 " />
                 </button>
               </div>
             </form>
