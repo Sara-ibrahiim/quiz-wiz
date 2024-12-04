@@ -80,8 +80,8 @@ export default function Quizzes() {
                 }
           }
         >
-          {profile?.role === "Instructor" && (
-            <div className=" border-2 rounded-lg dark:border-lightText border-primaryDark">
+          {/* {profile?.role === "Instructor" && ( */}
+            <div className=" border-2 rounded-lg dark:border-lightText border-primaryDark mb-3">
               <div className="flex flex-col gap-5 p-2 max-h-[500px] overflow-auto">
                 <UpComingQuizzes
                   api={QUIZES_URLS.getAllQuizes}
@@ -89,7 +89,7 @@ export default function Quizzes() {
                 />{" "}
               </div>
             </div>
-          ) }
+          {/* ) } */}
 
           <div className="border-2 rounded-lg dark:border-lightText border-primaryDark">
             <div className="p-2 max-h-[300px] overflow-auto">

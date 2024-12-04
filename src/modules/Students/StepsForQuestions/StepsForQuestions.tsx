@@ -1,7 +1,36 @@
+import { StudentQuiz_Url } from "@/constants/End-points";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import FormWizard from "react-form-wizard-component";
 import "react-form-wizard-component/dist/style.css";
+import { useParams } from "react-router-dom";
 
 export default function StepsForQuestions() {
+  const { quizIdStudent } = useParams<{ quizIdStudent: string }>();
+  const [getQuestions, setGetQuestions] = useState([]);
+
+  let getQuizById = async (quizIdStudent: string) => {
+    try {
+      let response = await axios.get(
+        StudentQuiz_Url.getQuizWithoutAnswer(quizIdStudent),
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
+
+      console.log(response.data); //for all data
+      setGetQuestions(response.data.data.questions); //   for get array of questions
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    if (quizIdStudent) {
+      getQuizById(quizIdStudent);
+    }
+  }, []);
+
   const arrayOfNum = [1, 2, 3, 4, 5];
   const arrayOfAnswers = ["A", "B", "C", "D"];
   const handleComplete = () => {

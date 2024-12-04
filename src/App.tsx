@@ -114,7 +114,7 @@ function App() {
             ),
         },
         {
-          path: "student-quiz",
+          path: "student-quiz/:quizId",
           element:
             profile?.role === "Student" ? (
               <StudentsQuestions />
