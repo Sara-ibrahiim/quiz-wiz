@@ -146,3 +146,13 @@ export default interface Quiz {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface  OptionsForStudent  {
+  [key: string]: { text: string };
+}
+
+export interface StudentQuestions{
+  title:string;
+  _id:string;
+  options: OptionsForStudent
+}
