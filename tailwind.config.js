@@ -12,7 +12,7 @@ export default {
         secondaryLight: "#FFEDDF",
         accent: "#C5D86D",
         borderColor: "#b3b3b3",
-
+        customGreen: '#c5d86d',
         // Additional colors for dark theme
         darkBackground: "#121212",
         darkSurface: "#1E1E1E",
