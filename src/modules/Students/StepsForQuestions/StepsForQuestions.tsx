@@ -5,15 +5,18 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import FormWizard from "react-form-wizard-component";
 import "react-form-wizard-component/dist/style.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import QuizCompletionModa from "../QuizCompletionModa/QuizCompletionModa";
+import QuizTimer from "../QuizTimer/QuizTimer";
 
 export default function StepsForQuestions() {
+  const navigate = useNavigate();
   const { quizIdStudent } = useParams<{ quizIdStudent: string }>();
   const [getQuestions, setGetQuestions] = useState<StudentQuestions[]>([]);
   const [lengthOfArray, setLengthOfArray] = useState<number[]>([]);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [quiztime, setQuiztime] = useState<number>(0);
   const [anArrayOfAnswers, setAnArrayOfAnswers] = useState<
     Map<string, string>[]
   >([]);
@@ -35,7 +38,7 @@ export default function StepsForQuestions() {
       );
 
       const questions = response.data.data.questions;
-      console.log(response.data.data);
+      setQuiztime(response.data.data.duration);
       setGetQuestions(questions);
 
       // Create array of Maps for each question's answers
@@ -89,6 +92,10 @@ export default function StepsForQuestions() {
           {isModalOpen && (
             <QuizCompletionModa setIsModalOpen={setIsModalOpen} />
           )}
+          <QuizTimer
+            totalTime={quiztime}
+            onTimeUp={() => navigate("/dashboard/results")}
+          />
           <FormWizard onComplete={handleComplete} onTabChange={tabChanged}>
             {lengthOfArray.map((num, idx) => {
               const question = getQuestions[num - 1];
