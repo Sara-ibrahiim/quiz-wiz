@@ -91,7 +91,7 @@ export default function QuestionBank() {
                   Question difficulty level
                 </th>
                 <th className="w-[20rem] bg-primaryDark text-white dark:bg-primaryLight dark:text-primaryDark font-semibold p-1 text-left border-r-2 border-gray-300">
-                  Date
+                  Type
                 </th>
                 <th className="w-[20rem] bg-primaryDark text-white dark:bg-primaryLight dark:text-primaryDark font-semibold p-1 text-left border-r-2 border-gray-300 rounded-tr-md rounded-br-md">
                   Actions
@@ -107,7 +107,7 @@ export default function QuestionBank() {
                   <td className="p-2 border-2">{qus.title}</td>
                   <td className="p-2 border-2">{qus.description}</td>
                   <td className="p-2 border-2">{qus.difficulty}</td>
-                  <td className="p-2 border-2">Date</td>
+                  <td className="p-2 border-2">{qus.type}</td>
                   <td className="p-3 border-2 flex justify-evenly">
                     <FaEye
                       onClick={() => {
