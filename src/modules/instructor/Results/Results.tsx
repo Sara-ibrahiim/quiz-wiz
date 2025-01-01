@@ -1,4 +1,4 @@
-import NoData from "@/components/NoData";
+import LoadingPencil from "@/components/LoadingPencil/LoadingPencil";
 import { Groups_URls, Results_URls } from "@/constants/End-points";
 import { RootState } from "@/store/store";
 import { GroupFromResult, Result } from "@/utils/interfaces";
@@ -167,11 +167,12 @@ export default function Results() {
                   )}
                 </>
               ) : (
-                <tbody>
-                  <td colSpan={6}>
-                    <NoData />
-                  </td>
-                </tbody>
+                <LoadingPencil/>
+                // <tbody>
+                //   <td colSpan={6}>
+                //     <NoData />
+                //   </td>
+                // </tbody>
               )}
             </table>
           </div>

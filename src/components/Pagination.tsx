@@ -29,7 +29,7 @@ const PaginationItems = ({
                   number === currentPage ? "active" : ""
                 }`}
               >
-                <PaginationLink onClick={() => paginate(number)} href="#">
+                <PaginationLink onClick={() => paginate(number)} >
                   {number}
                 </PaginationLink>
               </PaginationItem>

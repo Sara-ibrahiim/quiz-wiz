@@ -6,7 +6,7 @@ import NewQuiz from "./NewQuiz"; // Import the NewQuiz modal
 import { Link } from "react-router-dom";
 import { QUIZES_URLS } from "@/constants/End-points";
 import CompletedQuizzes from "./CompletedQuizzes";
-import { useSelector } from "react-redux";
+import {useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import ModelJoinQuiz from "@/modules/Students/StudentQuiz/ModelJoinQuiz";
 
