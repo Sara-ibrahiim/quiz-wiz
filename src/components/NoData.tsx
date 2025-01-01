@@ -1,4 +1,4 @@
-import React from "react";
+
 import NoDataImg from "../assets/no-data.png";
 export default function NoData() {
   return (

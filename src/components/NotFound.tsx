@@ -1,10 +1,9 @@
-import React from 'react'
-import NotImg from "../assets/../assets/404.jpg"
-import { Link, useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux';
+
+import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
 export default function NotFound() {
-  const dispatch = useDispatch();
+
   const profile = useSelector((state: RootState) => state.auth.profile);
   const path =
     profile?.role === "Instructor"
