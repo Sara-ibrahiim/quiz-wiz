@@ -197,7 +197,7 @@ const PopupModal  : React.FC<MyComponentProps> = ({
         delete data.answerC;
         delete data.answerD;
 
-  let response =  await axios.post(`${Question_URls.create}`, data, {
+  let response=      await axios.post(`${Question_URls.create}`, data, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },

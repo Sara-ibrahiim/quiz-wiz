@@ -28,7 +28,7 @@ export default function ModelJoinQuiz() {
       navigate(`/dashboard/student-quiz/${quizIdStudent}`);
       toast.success("joined successfully");
       reset();
-      //console.log(response.data.data.quiz);
+      console.log(response.data.data.quiz);
     } catch (error: any) {
       toast.error(error.response.data.message || "Error");
     }

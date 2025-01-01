@@ -1,4 +1,4 @@
-import { createHashRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, createHashRouter, RouterProvider } from "react-router-dom";
 import AuthLayout from "./layouts/AuthLayout";
 import NotFound from "./components/NotFound";
 import LoginRegister from "./modules/auth/LoginRegister/LoginRegister";
@@ -20,9 +20,8 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { useSelector } from "react-redux";
 import StudentsQuestions from "./modules/Students/StudentsQuestions/StudentsQuestions";
 function App() {
-
   const profile = useSelector((state: RootState) => state.auth.profile);
-  const routes = createHashRouter([
+  const routes = createBrowserRouter([
     {
       path: "",
       element: <AuthLayout />,
