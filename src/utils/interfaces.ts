@@ -30,6 +30,7 @@ export interface GroupsState {
 }
 
 export interface Group {
+  data: any;
   name: string;
   students: [];
   _id: string;

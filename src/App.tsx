@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import AuthLayout from "./layouts/AuthLayout";
 import NotFound from "./components/NotFound";
 import LoginRegister from "./modules/auth/LoginRegister/LoginRegister";
@@ -22,7 +22,7 @@ import StudentsQuestions from "./modules/Students/StudentsQuestions/StudentsQues
 function App() {
 
   const profile = useSelector((state: RootState) => state.auth.profile);
-  const routes = createBrowserRouter([
+  const routes = createHashRouter([
     {
       path: "",
       element: <AuthLayout />,

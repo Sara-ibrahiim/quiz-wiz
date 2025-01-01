@@ -14,6 +14,7 @@ import { fetchStudents } from "@/store/studentSlice";
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
+
 export default function NewGroupDialog({
   isOpen,
   onClose,
@@ -42,7 +43,6 @@ export default function NewGroupDialog({
     register,
     handleSubmit,
     control,
-    watch,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -51,19 +51,20 @@ export default function NewGroupDialog({
     },
   });
 
-  const selectedOptions = watch("students");
+ // const selectedOptions = watch("students");
 
   const handleOptionClick = (
     student: string,
     onChange: (value: string[]) => void
   ) => {
+    let selectedOptions: string[] = [];
     const updatedOptions = selectedOptions.includes(student)
       ? selectedOptions.filter((item) => item !== student)
       : [...selectedOptions, student];
     onChange(updatedOptions);
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = (data:any) => {
     if (isUpdate) {
       // dispatch update group
       dispatch(updateGroup({ data, id: IdUpdate }));
@@ -146,10 +147,10 @@ export default function NewGroupDialog({
                     </button>
                     {isOpenOption && (
                       <ul className="absolute z-10 w-full py-1 mt-1 overflow-auto dark:bg-darkBackground bg-white border border-gray-300 rounded-md shadow-lg max-h-60">
-                        {students.map((student, index) => (
+                        {students.map((student) => (
                           <li
-                            key={index}
-                            onClick={() =>
+                            key={student._id}
+                            onClick={() => student._id &&
                               handleOptionClick(student._id, onChange)
                             }
                             className={`px-2 py-2 text-right cursor-pointer hover:border flex items-center justify-between`}
