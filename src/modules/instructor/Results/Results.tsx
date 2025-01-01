@@ -4,14 +4,13 @@ import { RootState } from "@/store/store";
 import { GroupFromResult, Result } from "@/utils/interfaces";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 export default function Results() {
   const Navigate = useNavigate();
   const [allResults, setAllResults] = useState<Result[]>([]);
   const [groupList, setGroupList] = useState<GroupFromResult[]>([]);
-  const dispatch = useDispatch();
   const profile = useSelector((state: RootState) => state.auth.profile);
   const getAllResults = async () => {
     try {

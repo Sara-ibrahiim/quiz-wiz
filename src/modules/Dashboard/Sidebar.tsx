@@ -8,10 +8,10 @@ import { TfiTimer, TfiWrite } from "react-icons/tfi";
 import { SlLogout } from "react-icons/sl";
 import { PiStudent } from "react-icons/pi";
 import { FaRegFileAlt } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 export default function SideBar() {
-  const dispatch = useDispatch();
+
   const profile = useSelector((state: RootState) => state.auth.profile);
   const [isCollapse, setIsCollapse] = React.useState(() => {
     const storedValue = localStorage.getItem("isCollapse");
@@ -32,11 +32,6 @@ export default function SideBar() {
     }
   };
 
-  // const togglerCollapse = () => {
-  //   const newCollapseState = !isCollapse;
-  //   setIsCollapse(newCollapseState);
-  //   localStorage.setItem("isCollapse", JSON.stringify(newCollapseState));
-  // };
 
   const navigate = useNavigate();
 
@@ -147,13 +142,11 @@ export default function SideBar() {
               {" "}
               Results
             </MenuItem>
-            {/* ) : (
-              ""
-            )} */}
+     
 
             <MenuItem
               className="text-primaryDark dark:text-lightText   border-t border[#ececec-solid-1px]  "
-              //   onClick={}
+      
               icon={
                 <RiLockPasswordLine className="bg-secondaryLight text-primaryDark px-1 rounded text-4xl" />
               }

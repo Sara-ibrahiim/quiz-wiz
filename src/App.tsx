@@ -17,10 +17,10 @@ import Students from "./modules/instructor/Students/Students";
 import { RootState } from "./store/store";
 import NotFoundComponents from "./components/NotFoundComponents";
 import ProtectedRoute from "./components/ProtectedRoute";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import StudentsQuestions from "./modules/Students/StudentsQuestions/StudentsQuestions";
 function App() {
-  const dispatch = useDispatch();
+
   const profile = useSelector((state: RootState) => state.auth.profile);
   const routes = createBrowserRouter([
     {

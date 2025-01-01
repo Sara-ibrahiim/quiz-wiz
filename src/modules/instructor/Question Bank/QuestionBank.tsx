@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { FaPlusCircle, FaEye, FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { IoIosClose } from "react-icons/io";
-import { QuestionFrom, CreateQuestionFrom } from "../../../utils/interfaces";
+import { QuestionFrom} from "../../../utils/interfaces";
 import { Question_URls } from "../../../constants/End-points";
 import { IoCheckmark } from "react-icons/io5";
 import deleteImage from "../../../assets/no-data.png";
