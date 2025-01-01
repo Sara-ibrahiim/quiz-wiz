@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { BiSolidAlarmAdd } from "react-icons/bi";
 import { ImCheckmark, ImCross } from "react-icons/im";
 import { useForm } from "react-hook-form";
@@ -16,7 +16,6 @@ export default function ModelJoinQuiz() {
     register,
     handleSubmit,
     reset,
-    formState:{ errors },
   } = useForm();
   let onSubmit = async (data:any) => {
     try {
