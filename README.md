@@ -1,5 +1,3 @@
-#Quiz-Wiz
-
 
 Introduction
 
