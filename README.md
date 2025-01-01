@@ -1,4 +1,3 @@
-Quiz-Wiz
 
 Introduction
 
