@@ -1,3 +1,5 @@
+Quiz-Wiz
+
 Introduction
 
 Our quiz application is designed to make quiz creation and management simple for instructors, while providing a smooth and interactive experience for students. Built with React, TypeScript, and Redux Toolkit, the app features dark mode and ensures efficient state management for a seamless user experience.
