@@ -7,11 +7,9 @@ import { GrGroup } from "react-icons/gr";
 import { TfiTimer, TfiWrite } from "react-icons/tfi";
 import { SlLogout } from "react-icons/sl";
 import { PiStudent } from "react-icons/pi";
-import { LucideFileSpreadsheet } from "lucide-react";
 import { FaRegFileAlt } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
-import ModelJoinQuiz from "../Students/StudentQuiz/ModelJoinQuiz";
 export default function SideBar() {
   const dispatch = useDispatch();
   const profile = useSelector((state: RootState) => state.auth.profile);

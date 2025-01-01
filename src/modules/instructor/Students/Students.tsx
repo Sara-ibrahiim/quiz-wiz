@@ -1,6 +1,6 @@
 import { Students_URls } from "@/constants/End-points";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import studentImg from "../../../assets/stu.jpg";
 import NoData from "../../../assets/no-data.png";
 import { FaRegEye } from "react-icons/fa6";

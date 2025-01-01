@@ -1,11 +1,9 @@
-import { FaUserCircle } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { clearAuth } from "../../store/authSlice";
 import ThemeToggle from "../theme/ThemeToggle";
 import { RootState } from "@/store/store";
-import iconQuiz from "../../assets/iconQize.png";
 import { BiSolidAlarmAdd } from "react-icons/bi";
 const Navbar = () => {
   const dispatch = useDispatch();
