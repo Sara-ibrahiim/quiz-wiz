@@ -1,4 +1,4 @@
-import React from 'react'
+
 import NOimg from '../../src/assets/GirlNot.png' 
 export default function NotFoundComponents() {
   return (
