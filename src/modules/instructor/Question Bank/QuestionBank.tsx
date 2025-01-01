@@ -14,7 +14,7 @@ interface MyComponentProps {
   isOpen: boolean;
   onClose: () => void;
   title: any;
-  fireFunction: () => void;
+  fireFunction: ((id:string) => void) | null;
   selectedQuestion?: any;
 } 
 export default function QuestionBank() {
@@ -43,7 +43,8 @@ export default function QuestionBank() {
 
   const getAllQuestions = async () => {
     try {
-      const userId = JSON.parse(localStorage.getItem("profile"))._id;
+      const userProfile = localStorage.getItem("profile")
+      const userId = userProfile? JSON.parse(userProfile)._id : null;
       const res = await axios.get(`${Question_URls.getAll}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -196,7 +197,7 @@ const PopupModal  : React.FC<MyComponentProps> = ({
         delete data.answerC;
         delete data.answerD;
 
-        await axios.post(`${Question_URls.create}`, data, {
+  let response =  await axios.post(`${Question_URls.create}`, data, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
@@ -204,7 +205,10 @@ const PopupModal  : React.FC<MyComponentProps> = ({
         toast.success("Question added successfully");
         reset();
         onClose();
-        fireFunction();
+     const quId= response.data._id
+        if(fireFunction){
+          fireFunction(quId);
+        }
       } catch (error) {
         toast.error("An unexpected error occurred");
       }
@@ -242,7 +246,7 @@ const PopupModal  : React.FC<MyComponentProps> = ({
           <div>
             {title == "Delete Question" ? (
               <button
-                onClick={() => {
+                onClick={() => {if(fireFunction && selectedQuestion)
                   fireFunction(selectedQuestion._id);
                 }}
                 className="text-gray-500 hover:text-gray-800 px-2 text-3xl font-bold "

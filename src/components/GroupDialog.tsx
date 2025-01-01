@@ -15,6 +15,11 @@ import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 
+interface FormData {
+  students: string[];
+  name: string;
+}
+
 export default function NewGroupDialog({
   isOpen,
   onClose,
@@ -44,7 +49,7 @@ export default function NewGroupDialog({
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm({
+  } = useForm<FormData>({
     defaultValues: {
       students: [],
       name: isUpdate ? "" : "",
@@ -139,7 +144,7 @@ export default function NewGroupDialog({
                       className="w-full p-2 text-right bg-white text-gray-400 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     >
                       <span className="flex items-center justify-between">
-                        {value?.length > 0
+                        {Array.isArray (value)&&  value?.length > 0
                           ? `selected ${value.length} students`
                           : "List Students"}
                         <ChevronDownIcon className="w-5 h-5 text-gray-400" />
@@ -156,7 +161,7 @@ export default function NewGroupDialog({
                             className={`px-2 py-2 text-right cursor-pointer hover:border flex items-center justify-between`}
                           >
                             {student.first_name} {student.last_name}
-                            {value.includes(student._id) && (
+                            {Array.isArray (value)&& value.includes(student._id) && (
                               <CheckIcon className="w-5 h-5 text-blue-500" />
                             )}
                           </li>
