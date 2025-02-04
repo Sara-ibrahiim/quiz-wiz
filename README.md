@@ -54,7 +54,7 @@ Getting Started
 
 To begin using the quiz application:
 
-1. Clone the Repository: https://github.com/Ahmed-Serag19/quiz-wiz.git
+1. Clone the Repository: https://github.com/Sara-ibrahiim/quiz-wiz.git
 
 2. Install Dependencies: Run npm install to install required packages.
 
